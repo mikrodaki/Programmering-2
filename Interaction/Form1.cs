@@ -6,5 +6,11 @@ namespace Interaction
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Texten till en MassageBox som visas varje gång man klickar på" +
+                "button1 i formen.", "Det här är en egenvald rubrik till MassageBox");
+        }
     }
 }
