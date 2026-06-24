@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1 - Pizza order", "1.1 - 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Övning 1.2 - ArgumentOutOfRange", "Övning 1.2 - ArgumentOutOfRange\Övning 1.2 - ArgumentOutOfRange.csproj", "{CE7DF85B-26C9-4622-B789-C63A23873DC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.11 - Web browser", "1.11 - Web browser\1.11 - Web browser.csproj", "{22B451E7-3759-4245-8682-124E1024DE5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CE7DF85B-26C9-4622-B789-C63A23873DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE7DF85B-26C9-4622-B789-C63A23873DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE7DF85B-26C9-4622-B789-C63A23873DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22B451E7-3759-4245-8682-124E1024DE5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22B451E7-3759-4245-8682-124E1024DE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22B451E7-3759-4245-8682-124E1024DE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22B451E7-3759-4245-8682-124E1024DE5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
