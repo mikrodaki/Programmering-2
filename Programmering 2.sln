@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36717.8 d17.14
+VisualStudioVersion = 17.14.36717.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1 Interaction", "Interaction\1.1 Interaction.csproj", "{892255C4-3362-4FA3-AABC-C42C92FA5A68}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.3 Bartender", "1.2 CheckBoxar och radioknappar\1.3 Bartender.csproj", "{B9C377DD-AFB0-4ACB-8F68-514E636EB97F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.1 - Pizza order", "1.1 - Pizza order\1.1 - Pizza order.csproj", "{B17E8D5C-5067-4492-B39E-DC8E1DCFC01D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Övning 1.2 - ArgumentOutOfRange", "Övning 1.2 - ArgumentOutOfRange\Övning 1.2 - ArgumentOutOfRange.csproj", "{CE7DF85B-26C9-4622-B789-C63A23873DC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B17E8D5C-5067-4492-B39E-DC8E1DCFC01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B17E8D5C-5067-4492-B39E-DC8E1DCFC01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B17E8D5C-5067-4492-B39E-DC8E1DCFC01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7DF85B-26C9-4622-B789-C63A23873DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7DF85B-26C9-4622-B789-C63A23873DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7DF85B-26C9-4622-B789-C63A23873DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7DF85B-26C9-4622-B789-C63A23873DC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
