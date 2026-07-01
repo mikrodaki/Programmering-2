@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.11 - Web browser", "1.11 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.12 - DevBrowser", "1,12 - En mer utvecklad webbläsare\1.12 - DevBrowser.csproj", "{2938F87E-69F6-436B-99F1-E0A3F17A2446}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.13 - Menus", "1.13 - Menus\1.13 - Menus.csproj", "{07CCF52B-FD46-4833-A8B0-277D86A7D0C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2938F87E-69F6-436B-99F1-E0A3F17A2446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2938F87E-69F6-436B-99F1-E0A3F17A2446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2938F87E-69F6-436B-99F1-E0A3F17A2446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07CCF52B-FD46-4833-A8B0-277D86A7D0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07CCF52B-FD46-4833-A8B0-277D86A7D0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07CCF52B-FD46-4833-A8B0-277D86A7D0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07CCF52B-FD46-4833-A8B0-277D86A7D0C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
