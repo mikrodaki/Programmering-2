@@ -75,8 +75,8 @@ namespace _1._11___Web_browser
         {
             visitedSites.Clear();
             currentIndex = -1;
-            tbURL.Text = string.Empty;
-            browserWindow.Navigate(tbURL.Text);
+            browserWindow.Navigate("about:blank");
+            tbURL.Text = "";
             UpdateButtons();
         }
 
