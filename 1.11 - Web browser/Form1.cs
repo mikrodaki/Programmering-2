@@ -7,7 +7,7 @@ namespace _1._11___Web_browser
     public partial class Form1 : Form
     {
         List<string> visitedSites = new List<string>();
-        int currentIndex = -1;
+        int currentIndex = -1; 
         public Form1()
         {
             InitializeComponent();
