@@ -16,18 +16,17 @@ namespace Memory
 			InitBoard();
 			ShuffleCardsFisherYates();
 			ShowCards();
-			for (int i = 0; i < 16; i++)
-			{
-				cardTurned.Add(false);
-			}
 			label1.Text = $"Antal försök: {noOfTries}";
 		}
-
 
 		private void SetCurrentCard(PictureBox newCard)
 		{
 			previousCard = currentCard;
 			currentCard = newCard;
+		}
+		private int ConnectImageToCardImproved(int name)
+		{
+			return (name - 1) / 2;
 		}
 		private int ConnectImageToCard(int name)
 		{
@@ -95,6 +94,7 @@ namespace Memory
 				picture.SizeMode = PictureBoxSizeMode.StretchImage;
 				picture.Click += new EventHandler(Picture_Clicked);
 				pictures.Add(picture);
+				cardTurned.Add(false);
 			}
 		}
 		private void Picture_Clicked(object? sender, EventArgs e)
@@ -107,12 +107,12 @@ namespace Memory
 
 			if (currentCard != null && previousCard != null)
 			{
-				if (ConnectImageToCard(Convert.ToInt32(currentCard.Name)) == ConnectImageToCard(Convert.ToInt32(previousCard.Name)))
+				if (ConnectImageToCardImproved(Convert.ToInt32(currentCard.Name)) == ConnectImageToCardImproved(Convert.ToInt32(previousCard.Name)))
 				{
 					currentCard.Visible = false;
 					previousCard.Visible = false;
 					noOfPairs++;
-					if (noOfPairs == 8) 
+					if (noOfPairs == 8)
 					{
 						MessageBox.Show($"Du klarade det på {noOfTries} försök");
 						this.Close();
@@ -142,7 +142,7 @@ namespace Memory
 
 			SetCurrentCard(picture);
 
-			picture.Image = Image.FromFile(ConnectImageToCard(Convert.ToInt32(picture.Name)) + ".png");
+			picture.Image = Image.FromFile(ConnectImageToCardImproved(Convert.ToInt32(picture.Name)) + ".png");
 		}
 		private void ShuffleCardsFisherYates()
 		{
