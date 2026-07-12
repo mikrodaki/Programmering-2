@@ -24,10 +24,12 @@ namespace Memory
 			previousCard = currentCard;
 			currentCard = newCard;
 		}
+
 		private int ConnectImageToCardImproved(int name)
 		{
 			return (name - 1) / 2;
 		}
+
 		private int ConnectImageToCard(int name)
 		{
 			if (name == 1 || name == 2)
