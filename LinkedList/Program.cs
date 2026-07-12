@@ -9,7 +9,7 @@ namespace LinkedList
 		{
 			LinkedList linkedList = new LinkedList();
 
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 			{
 				linkedList.Add(random.Next(0, 10));
 			}
@@ -120,6 +120,29 @@ namespace LinkedList
 					: $"Det gick inte att byta värden på index {randomIndex} och index {randomIndex2}."
 			);
 			linkedList.Print();
+			Console.WriteLine();
+
+			randomValue = random.Next(0, 10);
+			int randomValue2 = random.Next(0, 10);
+			WriteToConsole("SwapValue(int value1, int value2)");
+			bool valuesSwaped = linkedList.SwapValues(randomValue, randomValue2);
+			Console.WriteLine(
+				valuesSwaped
+					? $"Elementet med värde {randomValue} bytte värde med elementet med värde {randomValue2}."
+					: $"Värde {randomValue} och värde {randomValue2} finns inte i listan."
+			);
+			linkedList.Print();
+			Console.WriteLine();
+
+			WriteToConsole("Sort()");
+			linkedList.Sort();
+			linkedList.Print();
+			Console.WriteLine();
+
+			WriteToConsole("Clear()");
+			linkedList.Clear();
+			linkedList.Print();
+			Console.WriteLine();
 		}
 
 		static void WriteToConsole(string text)
@@ -505,7 +528,7 @@ namespace LinkedList
 			Element current = element;
 			Element firstElement = null;
 			Element secondElement = null;
-			Element tempElement = new Element(0, null, null);	
+			Element tempElement = new Element(0, null, null);
 			int currentIndex = 0;
 
 			while (current != null)
@@ -529,12 +552,28 @@ namespace LinkedList
 		// inte gick 
 		public bool SwapValues(int value1, int value2)
 		{
-			return false;
+			int? firstIndex = this.GetFirstIndex(value1);
+			int? SecondIndex = this.GetFirstIndex(value2);
+
+			if (firstIndex == null || SecondIndex == null)
+				return false;
+			else
+				return Swap(firstIndex.Value, SecondIndex.Value);
 		}
 
+		//Bubble sort
 		public void Sort()
 		{
-
+			int max = Count() - 1;
+			for (int i = 0; i < max; i++)
+			{
+				int nrLeft = max - i;
+				for (int j = 0; j < nrLeft; j++)
+				{
+					if (GetValue(j).Value > GetValue(j + 1).Value)
+						Swap(j, j + 1);
+				}
+			}
 		}
 	}
 }
