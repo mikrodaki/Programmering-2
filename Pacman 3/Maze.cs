@@ -82,7 +82,7 @@ namespace PacmanGame
          */
         public void Draw()
         {
-            maxPoints = 10;
+            maxPoints = 0;
             for (int row = 0; row < consoleMaze.Length; row++)
                 for (int col = 0; col < consoleMaze[row].Length; col++)
                 {
@@ -92,7 +92,7 @@ namespace PacmanGame
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write(".");
-                        //maxPoints++;
+                        maxPoints++;
                     }
                     else
                     {

@@ -22,9 +22,12 @@ namespace PacmanGame
 			this.x = startX;
 			this.y = startY;
 
-			this.color = chasesPacman
+			ChasesPacman = chasesPacman;
+
+			this.color = ChasesPacman
 			? ConsoleColor.Red
-			: ConsoleColor.Blue;
+			: ConsoleColor.Green;
+
 		}
 
 		public int GetOpposite(int direction)

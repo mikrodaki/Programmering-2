@@ -40,12 +40,12 @@ namespace PacmanGame
 			DrawLives(pacman.livesLeft);
 			DrawLevel(pacman.level);
 
-			for (int i = 0; i < 10; i++)
-			{
-				ghostStorage.Add(CreateRandomGhost(maze, pacman, ghosts));
-			}
+			//for (int i = 0; i < 10; i++)
+			//{
+			//	ghostStorage.Add(CreateRandomGhost(maze, pacman, ghostStorage));
+			//}
 
-			ghosts.Add(ghostStorage[0]);
+			ghosts.Add(CreateRandomGhost(maze, pacman, ghosts));
 
 			while (!quitGame)
 			{
@@ -56,16 +56,13 @@ namespace PacmanGame
 				{
 					ReadKeys(pacman);
 					pacman.ChangeDirection(maze.maze);
-					for (int i = 0; i < ghosts.Count; i++)
+
+					foreach (Ghost ghost in ghosts)
 					{
-						if (i < 2)
-						{
-							ghosts[i].ChangeDirectionChasingPacman(maze.maze, pacman);
-						}
+						if (ghost.ChasesPacman)
+							ghost.ChangeDirectionChasingPacman(maze.maze, pacman);
 						else
-						{
-							ghosts[i].ChangeDirection(maze.maze);
-						}
+							ghost.ChangeDirection(maze.maze);
 					}
 
 					foreach (Ghost ghost in ghosts)
@@ -150,15 +147,14 @@ namespace PacmanGame
 			ghosts.Clear();
 			//ghostStorage.Clear();
 
-			//for (int i = 0; i < 10; i++)
+			//for (int i = 0; i < pacman.level; i++)
 			//{
-			//	ghostStorage.Add(CreateRandomGhost(maze, pacman, ghosts));
+			//	ghostStorage.Add(CreateRandomGhost(maze, pacman, ghostStorage));
 			//}
 
 			for (int i = 0; i < pacman.level; i++)
 			{
-				if (i < ghostStorage.Count)
-					ghosts.Add(ghostStorage[i]);
+				ghosts.Add(CreateRandomGhost(maze, pacman, ghosts));
 			}
 
 			foreach (Ghost ghost in ghosts)
@@ -511,11 +507,11 @@ namespace PacmanGame
 		static Ghost CreateRandomGhost(Maze maze, Pacman pacman, List<Ghost> ghosts)
 		{
 			var position = GetRandomEmptyPosition(maze, pacman);
-			ConsoleColor color = colors[random.Next(colors.Length)];
 			if (ghosts.Count < 2)
-				return new Ghost(position.x, position.y, true);
-			else
 				return new Ghost(position.x, position.y, false);
+			else
+				
+				return new Ghost(position.x, position.y, true);
 		}
 	}
 }
