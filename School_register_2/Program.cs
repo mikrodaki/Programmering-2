@@ -1,4 +1,4 @@
-namespace School_register
+namespace School_register_2
 {
 	internal static class Program
 	{

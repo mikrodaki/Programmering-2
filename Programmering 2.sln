@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacman 3", "Pacman 3\Pacman 3.csproj", "{498D1B48-8AC6-48BA-7454-20444A1FBD88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School_register", "School_register\School_register.csproj", "{8C9E77D3-F607-4AED-84FD-4B915EB87C5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School_register_2", "School_register_2\School_register_2.csproj", "{DF34050C-F5A9-4036-A1DD-6025BA537644}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,10 +83,10 @@ Global
 		{498D1B48-8AC6-48BA-7454-20444A1FBD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{498D1B48-8AC6-48BA-7454-20444A1FBD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{498D1B48-8AC6-48BA-7454-20444A1FBD88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C9E77D3-F607-4AED-84FD-4B915EB87C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C9E77D3-F607-4AED-84FD-4B915EB87C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C9E77D3-F607-4AED-84FD-4B915EB87C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C9E77D3-F607-4AED-84FD-4B915EB87C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF34050C-F5A9-4036-A1DD-6025BA537644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF34050C-F5A9-4036-A1DD-6025BA537644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF34050C-F5A9-4036-A1DD-6025BA537644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF34050C-F5A9-4036-A1DD-6025BA537644}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
