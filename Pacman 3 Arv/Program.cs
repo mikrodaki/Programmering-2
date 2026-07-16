@@ -36,9 +36,9 @@ namespace PacmanGame
 
 			pacman.LevelScore = 0;
 
-			DrawScore(pacman.score);
-			DrawLives(pacman.livesLeft);
-			DrawLevel(pacman.level);
+			DrawScore(pacman.Score);
+			DrawLives(pacman.LivesLeft);
+			DrawLevel(pacman.Level);
 
 			//for (int i = 0; i < 10; i++)
 			//{
@@ -91,11 +91,11 @@ namespace PacmanGame
 						if (gameOver) break;
 					}
 
-					if (maze.IsPellet(pacman.x, pacman.y))
+					if (maze.IsPellet(pacman.X, pacman.Y))
 					{
-						maze.DeletePellet(pacman.x, pacman.y);
+						maze.DeletePellet(pacman.X, pacman.Y);
 						pacman.IncreaseScore();
-						DrawScore(pacman.score);
+						DrawScore(pacman.Score);
 					}
 
 					pacman.Draw();
@@ -107,7 +107,7 @@ namespace PacmanGame
 
 					if (pacman.LevelScore == maze.maxPoints)
 					{
-						pacman.level++;
+						pacman.Level++;
 						levelCompleted = true;
 
 						break;
@@ -135,9 +135,9 @@ namespace PacmanGame
 			maze.Draw();
 			IntroNewLevel();
 
-			DrawScore(pacman.score);
-			DrawLives(pacman.livesLeft);
-			DrawLevel(pacman.level);
+			DrawScore(pacman.Score);
+			DrawLives(pacman.LivesLeft);
+			DrawLevel(pacman.Level);
 
 			pacman.ResetLevelScore();
 			pacman.ResetPosition();
@@ -152,7 +152,7 @@ namespace PacmanGame
 			//	ghostStorage.Add(CreateRandomGhost(maze, pacman, ghostStorage));
 			//}
 
-			for (int i = 0; i < pacman.level; i++)
+			for (int i = 0; i < pacman.Level; i++)
 			{
 				ghosts.Add(CreateRandomGhost(maze, pacman, ghosts));
 			}
@@ -166,10 +166,10 @@ namespace PacmanGame
 
 		static bool HandlePacmanDeath(Maze maze, Pacman pacman, List<Ghost> ghosts)
 		{
-			pacman.livesLeft--;
+			pacman.LivesLeft--;
 
 			ResetGameBoard(maze, pacman, ghosts);
-			DrawLives(pacman.livesLeft);
+			DrawLives(pacman.LivesLeft);
 
 			// Nollställ riktning (viktigt!)
 			pacman.ResetDirection();
@@ -183,7 +183,7 @@ namespace PacmanGame
 				Console.ReadKey(true);
 			}
 
-			return pacman.livesLeft == 0;
+			return pacman.LivesLeft == 0;
 			Intro();
 		}
 
@@ -191,7 +191,7 @@ namespace PacmanGame
 		{
 			foreach (Ghost ghost in ghosts)
 			{
-				if (ghost.x == pacman.x && ghost.y == pacman.y)
+				if (ghost.x == pacman.X && ghost.y == pacman.Y)
 				{
 					Hit(ghost.x, ghost.y);
 					return true;
@@ -236,8 +236,6 @@ namespace PacmanGame
 			Console.WriteLine("Level: " + currentLevel);
 		}
 
-
-
 		/*
          * ReadKeys
          *
@@ -275,8 +273,6 @@ namespace PacmanGame
 					break;
 			}
 		}
-
-
 
 		/*
          * Intro
@@ -330,8 +326,6 @@ namespace PacmanGame
 			//WriteAt(50, 13, "                      ");
 		}
 
-
-
 		/*
          * DrawPacmanTitles
          * 
@@ -350,8 +344,6 @@ namespace PacmanGame
 				WriteAt(xPos * 77 + 4, yPos * 11 + 10, " |_| /_/ \\_\\___||_|  |_/_/ \\_\\_|\\_|");
 			}
 		}
-
-
 
 		/*
          * DrawGhost
@@ -377,8 +369,6 @@ namespace PacmanGame
 			Console.BackgroundColor = ConsoleColor.Black;
 		}
 
-
-
 		/*
          * Hit
          * 
@@ -399,8 +389,6 @@ namespace PacmanGame
 				System.Threading.Thread.Sleep(70);
 			}
 		}
-
-
 
 		/*
          * GameOver
@@ -440,8 +428,6 @@ namespace PacmanGame
 			Console.Clear();
 		}
 
-
-
 		/*
          * LevelCompleted
          * 
@@ -472,8 +458,6 @@ namespace PacmanGame
 			Console.Clear();
 		}
 
-
-
 		/*
          * WriteAt
          * 
@@ -496,7 +480,7 @@ namespace PacmanGame
 
 				if (maze.maze[y, x] == 2)
 				{
-					int distance = Math.Abs(x - pacman.x) + Math.Abs(y - pacman.y);
+					int distance = Math.Abs(x - pacman.X) + Math.Abs(y - pacman.Y);
 
 					if (distance >= 10)
 						return (x, y);

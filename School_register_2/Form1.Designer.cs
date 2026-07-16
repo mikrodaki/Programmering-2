@@ -163,7 +163,7 @@
 			buttonListAllStudents.TabIndex = 12;
 			buttonListAllStudents.Text = "Visa";
 			buttonListAllStudents.UseVisualStyleBackColor = true;
-			buttonListAllStudents.Click += buttonListAllStudents_Click;
+			buttonListAllStudents.Click += buttonAllStudents_Click;
 			// 
 			// buttonStudentInSchoolClass
 			// 
@@ -173,7 +173,7 @@
 			buttonStudentInSchoolClass.TabIndex = 13;
 			buttonStudentInSchoolClass.Text = "Visa";
 			buttonStudentInSchoolClass.UseVisualStyleBackColor = true;
-			buttonStudentInSchoolClass.Click += buttonStudentInSchoolClass_Click;
+			buttonStudentInSchoolClass.Click += buttonStudentsInSchoolClass_Click;
 			// 
 			// label3
 			// 
@@ -210,7 +210,7 @@
 			buttonStudentInGradeLevel.TabIndex = 16;
 			buttonStudentInGradeLevel.Text = "Visa";
 			buttonStudentInGradeLevel.UseVisualStyleBackColor = true;
-			buttonStudentInGradeLevel.Click += buttonStudentInGradeLevel_Click;
+			buttonStudentInGradeLevel.Click += buttonStudentsInGradeLevel_Click;
 			// 
 			// Form1
 			// 

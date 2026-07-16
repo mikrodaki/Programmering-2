@@ -116,9 +116,29 @@ namespace School_register_2
 			listBoxStudents.ClearSelected();
 		}
 
-		private void buttonListAllStudents_Click(object sender, EventArgs e)
+		private void buttonStudentsInSchoolClass_Click(object sender, EventArgs e)
 		{
-			ListForm listForm = new ListForm($"Alla studenter i {school.Name}", school.Name, school);
+			SchoolClass schoolClass = (SchoolClass)listBoxSchoolClasses.SelectedItem;
+			GradeLevel gradeLevel = (GradeLevel)listBoxGradeLevels.SelectedItem;
+			if (schoolClass != null && gradeLevel != null)
+			{
+				ListForm listForm = new ListForm($"Studenter i {gradeLevel.Name} {schoolClass.Name}", school.Name, schoolClass.Students);
+				listForm.Show();
+			}
+		}
+
+		private void buttonStudentsInGradeLevel_Click(object sender, EventArgs e)
+		{
+			GradeLevel gradeLevel = (GradeLevel)listBoxGradeLevels.SelectedItem;
+			if (gradeLevel != null)
+			{
+				ListForm listForm = new ListForm($"Studenter i {gradeLevel.Name}", school.Name, gradeLevel.SchoolClasses);
+				listForm.Show();
+			}
+		}
+		private void buttonAllStudents_Click(object sender, EventArgs e)
+		{
+			ListForm listForm = new ListForm($"Alla studenter i {school.Name}", school.Name, school.GradeLevels);
 			listForm.Show();
 		}
 
@@ -174,25 +194,5 @@ namespace School_register_2
 			}
 		}
 
-		private void buttonStudentInSchoolClass_Click(object sender, EventArgs e)
-		{
-			SchoolClass schoolClass = (SchoolClass)listBoxSchoolClasses.SelectedItem;
-			GradeLevel gradeLevel = (GradeLevel)listBoxGradeLevels.SelectedItem;
-			if (schoolClass != null && gradeLevel != null)
-			{
-				ListForm listForm = new ListForm($"Studenter i {gradeLevel.Name} {schoolClass.Name}", school.Name, schoolClass.Students);
-				listForm.Show();
-			}
-		}
-
-		private void buttonStudentInGradeLevel_Click(object sender, EventArgs e)
-		{
-			GradeLevel gradeLevel = (GradeLevel)listBoxGradeLevels.SelectedItem;
-			if (gradeLevel != null)
-			{
-				ListForm listForm = new ListForm($"Studenter i {gradeLevel.Name}", school.Name, gradeLevel.SchoolClasses);
-				listForm.Show();
-			}
-		}
 	}
 }

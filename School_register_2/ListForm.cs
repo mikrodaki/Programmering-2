@@ -1,24 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace School_register_2
+﻿namespace School_register_2
 {
 	public partial class ListForm : Form
 	{
-		string listName;
-		public ListForm(string listName)
-		{
-			InitializeComponent();
-			this.Text = listName;
-		}
-
 		public ListForm(string listName, string schoolName, List<Student> students)
 		{
 			InitializeComponent();
@@ -44,12 +27,12 @@ namespace School_register_2
 			}
 		}
 
-		public ListForm(string listName, string schoolName, School school)
+		public ListForm(string listName, string schoolName, List<GradeLevel> gradeLevels)
 		{
 			InitializeComponent();
 			this.Text = schoolName;
 			label1.Text = listName;
-			foreach(GradeLevel gradeLevel in school.GradeLevels) 
+			foreach(GradeLevel gradeLevel in gradeLevels) 
 			{ 
 				foreach(SchoolClass schoolClass in gradeLevel.SchoolClasses) 
 				{
