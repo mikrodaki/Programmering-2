@@ -2,35 +2,46 @@
 
 namespace PacmanGame
 {
-	class Ghost
+	public class Ghost : Character
 	{
-		public int x;
-		public int y;
-		ConsoleColor color;
-		int direction;
-		Random random = new Random();
-		private int startX;
-		private int startY;
-		public bool ChasesPacman { get; set; }
+		private static Random random = new Random();
 
-		public Ghost(int startX, int startY, bool chasesPacman)
+		public bool ChasesPacman { get; private set; }
+
+		public Ghost(int startX, int startY, bool chasesPacman) : base (startX, startY)
 		{
-
-			this.startX = startX;
-			this.startY = startY;
-
-			this.x = startX;
-			this.y = startY;
-
 			ChasesPacman = chasesPacman;
 
-			this.color = ChasesPacman
+			color = ChasesPacman
 			? ConsoleColor.Red
 			: ConsoleColor.Green;
 
+			symbol = "ᗣ";
 		}
 
-		public int GetOpposite(int direction)
+		private List<int> GetPossibleDirections(int[,] maze)
+		{
+			List<int> possibleDirections = new List<int>();
+
+			if (maze[Y - 1, X] != Constants.WALL)
+				possibleDirections.Add(Constants.UP);
+
+			if (maze[Y + 1, X] != Constants.WALL)
+				possibleDirections.Add(Constants.DOWN);
+
+			if (maze[Y, X - 1] != Constants.WALL)
+				possibleDirections.Add(Constants.LEFT);
+
+			if (maze[Y, X + 1] != Constants.WALL)
+				possibleDirections.Add(Constants.RIGHT);
+
+			int opposite = GetOpposite(direction);
+			possibleDirections.Remove(opposite);
+
+			return possibleDirections;
+		}
+
+		private int GetOpposite(int direction)
 		{
 			switch (direction)
 			{
@@ -44,57 +55,35 @@ namespace PacmanGame
 
 		public void ChangeDirection(int[,] maze)
 		{
-			List<int> possibleDirections = new List<int>();
+			List<int> possibleDirections = GetPossibleDirections(maze);
 
-			if (maze[y - 1, x] != Constants.WALL)
-				possibleDirections.Add(Constants.UP);
-
-			if (maze[y + 1, x] != Constants.WALL)
-				possibleDirections.Add(Constants.DOWN);
-
-			if (maze[y, x - 1] != Constants.WALL)
-				possibleDirections.Add(Constants.LEFT);
-
-			if (maze[y, x + 1] != Constants.WALL)
-				possibleDirections.Add(Constants.RIGHT);
-
-			// Ta bort bakåt
-			int opposite = GetOpposite(direction);
-			possibleDirections.Remove(opposite);
-
-			// Slumpa ny riktning
-			direction = possibleDirections[random.Next(possibleDirections.Count)];
+			// Om ingen riktning mot Pac-Man fungerade:
+			// välj en slumpmässig tillåten riktning.
+			// Ifall det finns återvändsgränder så sätt direction till opposite.
+			// Finns inte i detta spel just nu men ändå. 
+			if (possibleDirections.Count > 0)
+			{
+				direction = possibleDirections[random.Next(possibleDirections.Count)];
+			}
+			else
+			{
+				direction = GetOpposite(direction);
+			}
 		}
 
 		public void ChangeDirectionChasingPacman(int[,] maze, Pacman pacman)
 		{
-			List<int> possibleDirections = new List<int>();
-
-			if (maze[y - 1, x] != Constants.WALL)
-				possibleDirections.Add(Constants.UP);
-
-			if (maze[y + 1, x] != Constants.WALL)
-				possibleDirections.Add(Constants.DOWN);
-
-			if (maze[y, x - 1] != Constants.WALL)
-				possibleDirections.Add(Constants.LEFT);
-
-			if (maze[y, x + 1] != Constants.WALL)
-				possibleDirections.Add(Constants.RIGHT);
-
-			// Spöket ska helst inte gå tillbaka samma väg.
-			int opposite = GetOpposite(direction);
-			possibleDirections.Remove(opposite);
+			List<int> possibleDirections = GetPossibleDirections(maze);
 
 			// Försök först gå horisontellt mot Pac-Man.
-			if (pacman.X > x &&
+			if (pacman.X > X &&
 				possibleDirections.Contains(Constants.RIGHT))
 			{
 				direction = Constants.RIGHT;
 				return;
 			}
 
-			if (pacman.X < x &&
+			if (pacman.X < X &&
 				possibleDirections.Contains(Constants.LEFT))
 			{
 				direction = Constants.LEFT;
@@ -103,14 +92,14 @@ namespace PacmanGame
 
 			// Om horisontell rörelse inte gick,
 			// försök gå vertikalt mot Pac-Man.
-			if (pacman.Y > y &&
+			if (pacman.Y > Y &&
 				possibleDirections.Contains(Constants.DOWN))
 			{
 				direction = Constants.DOWN;
 				return;
 			}
 
-			if (pacman.Y < y &&
+			if (pacman.Y < Y &&
 				possibleDirections.Contains(Constants.UP))
 			{
 				direction = Constants.UP;
@@ -119,9 +108,16 @@ namespace PacmanGame
 
 			// Om ingen riktning mot Pac-Man fungerade:
 			// välj en slumpmässig tillåten riktning.
-			direction = possibleDirections[
-				random.Next(possibleDirections.Count)
-			];
+			// Ifall det finns återvändsgränder så sätt direction till opposite.
+			// Finns inte i detta spel just nu men ändå. 
+			if (possibleDirections.Count > 0)
+			{
+				direction = possibleDirections[random.Next(possibleDirections.Count)];
+			}
+			else
+			{
+				direction = GetOpposite(direction);
+			}
 		}
 
 		/*
@@ -133,8 +129,8 @@ namespace PacmanGame
          */
 		public void Move(int[,] maze)
 		{
-			int newX = x;
-			int newY = y;
+			int newX = X;
+			int newY = Y;
 
 			switch (direction)
 			{
@@ -156,34 +152,9 @@ namespace PacmanGame
 
 			if (maze[newY, newX] != Constants.WALL)
 			{
-				x = newX;
-				y = newY;
+				X = newX;
+				Y = newY;
 			}
-		}
-
-		/*
-         * Draw
-         *
-         * Draws a red @ at (x, y) coordinate
-         *
-         */
-		public void Draw()
-		{
-			Console.ForegroundColor = color;
-			WriteAt("ᗣ");
-		}
-
-		/*
-         * WriteAt
-         *
-         * WriteAt is a help method that writes
-         * a text at a specific coordinate
-         *
-         */
-		void WriteAt(string text)
-		{
-			Console.SetCursorPosition(x + Constants.X_SCREEN_POS, y + Constants.Y_SCREEN_POS);
-			Console.Write(text);
 		}
 
 		/*
@@ -194,7 +165,7 @@ namespace PacmanGame
          */
 		public void Delete(int[,] maze)
 		{
-			if (maze[y, x] == Constants.PELLET)
+			if (maze[Y, X] == Constants.PELLET)
 			{
 				Console.ForegroundColor = ConsoleColor.White;
 				WriteAt(".");
@@ -202,12 +173,5 @@ namespace PacmanGame
 			else
 				WriteAt(" ");
 		}
-
-		public void ResetPosition()
-		{
-			x = startX;
-			y = startY;
-		}
-
 	}
 }

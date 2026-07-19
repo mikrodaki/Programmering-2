@@ -1,9 +1,9 @@
 namespace PacmanGame
 {
-    class Maze
+    public class Maze
     {
-        public int maxPoints = 0;
         private readonly int[,] originalMaze;
+        public int LevelMaxPoints {  get; private set; }
 
         public Maze() 
         {
@@ -71,8 +71,6 @@ namespace PacmanGame
                 maze[y, x] = Constants.PATH;
         }
 
-
-
         /* 
          * 
          * Draw
@@ -82,7 +80,6 @@ namespace PacmanGame
          */
         public void Draw()
         {
-            maxPoints = 20;
             for (int row = 0; row < consoleMaze.Length; row++)
                 for (int col = 0; col < consoleMaze[row].Length; col++)
                 {
@@ -92,7 +89,7 @@ namespace PacmanGame
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write(".");
-                        //maxPoints++;
+                        LevelMaxPoints++;
                     }
                     else
                     {
@@ -105,7 +102,7 @@ namespace PacmanGame
         public void Reset() 
         {
             maze = (int[,])originalMaze.Clone();
-            maxPoints = 0;
+            LevelMaxPoints = 0;
         }
     }
 }

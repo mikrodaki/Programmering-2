@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace PacmanGame
+﻿namespace PacmanGame
 {
 	internal class Program
 	{
-		static Random random = new Random();
-		static ConsoleColor[] colors =
+		private static Random random = new Random();
+		private static ConsoleColor[] colors =
 		{
 			ConsoleColor.Red,
 			ConsoleColor.Green,
@@ -23,7 +21,6 @@ namespace PacmanGame
 			Maze maze = new Maze();
 			Pacman pacman = new Pacman(14, 9);
 			List<Ghost> ghosts = new List<Ghost>();
-			List<Ghost> ghostStorage = new List<Ghost>();
 			bool levelCompleted = false;
 			bool gameOver = false;
 			bool quitGame = false;
@@ -34,16 +31,11 @@ namespace PacmanGame
 
 			maze.Draw();
 
-			pacman.LevelScore = 0;
+			pacman.ResetLevelScore();
 
 			DrawScore(pacman.Score);
 			DrawLives(pacman.LivesLeft);
 			DrawLevel(pacman.Level);
-
-			//for (int i = 0; i < 10; i++)
-			//{
-			//	ghostStorage.Add(CreateRandomGhost(maze, pacman, ghostStorage));
-			//}
 
 			ghosts.Add(CreateRandomGhost(maze, pacman, ghosts));
 
@@ -105,9 +97,9 @@ namespace PacmanGame
 						ghost.Draw();
 					}
 
-					if (pacman.LevelScore == maze.maxPoints)
+					if (pacman.LevelScore == maze.LevelMaxPoints)
 					{
-						pacman.Level++;
+						pacman.IncreaseLevel();
 						levelCompleted = true;
 
 						break;
@@ -123,12 +115,12 @@ namespace PacmanGame
 				else if (levelCompleted)
 				{
 					LevelCompleted();
-					StartNewLevel(maze, pacman, ghosts, ghostStorage);
+					StartNewLevel(maze, pacman, ghosts);
 				}
 			}
 		}
 
-		static void StartNewLevel(Maze maze, Pacman pacman, List<Ghost> ghosts, List<Ghost> ghostStorage)
+		static void StartNewLevel(Maze maze, Pacman pacman, List<Ghost> ghosts)
 		{
 			//Intro();
 			maze.Reset();
@@ -145,12 +137,6 @@ namespace PacmanGame
 			pacman.Draw();
 
 			ghosts.Clear();
-			//ghostStorage.Clear();
-
-			//for (int i = 0; i < pacman.level; i++)
-			//{
-			//	ghostStorage.Add(CreateRandomGhost(maze, pacman, ghostStorage));
-			//}
 
 			for (int i = 0; i < pacman.Level; i++)
 			{
@@ -166,7 +152,7 @@ namespace PacmanGame
 
 		static bool HandlePacmanDeath(Maze maze, Pacman pacman, List<Ghost> ghosts)
 		{
-			pacman.LivesLeft--;
+			pacman.LoseLife();
 
 			ResetGameBoard(maze, pacman, ghosts);
 			DrawLives(pacman.LivesLeft);
@@ -184,16 +170,16 @@ namespace PacmanGame
 			}
 
 			return pacman.LivesLeft == 0;
-			Intro();
+			//Intro();
 		}
 
 		static bool CheckCollision(Pacman pacman, List<Ghost> ghosts)
 		{
 			foreach (Ghost ghost in ghosts)
 			{
-				if (ghost.x == pacman.X && ghost.y == pacman.Y)
+				if (ghost.X == pacman.X && ghost.Y == pacman.Y)
 				{
-					Hit(ghost.x, ghost.y);
+					Hit(ghost.X, ghost.Y);
 					return true;
 				}
 			}
@@ -488,6 +474,10 @@ namespace PacmanGame
 			}
 		}
 
+		/*
+		 * Creates a new Ghost a a random position. Creates a Ghost that chases Pacman
+		 * if it is ghost number 3 or above. 
+		 */
 		static Ghost CreateRandomGhost(Maze maze, Pacman pacman, List<Ghost> ghosts)
 		{
 			var position = GetRandomEmptyPosition(maze, pacman);

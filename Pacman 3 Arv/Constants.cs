@@ -1,6 +1,6 @@
 namespace PacmanGame
 {
-    class Constants
+    public class Constants
     {
         public static int X_SCREEN_POS = 46;
         public static int Y_SCREEN_POS = 5;

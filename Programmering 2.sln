@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 Circle Cylinder", "2 Circ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2 Pacman 3 Arv", "Pacman 3 Arv\2 Pacman 3 Arv.csproj", "{685BBCF7-39C3-8D24-F729-73605D73C962}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterMind", "Mastermind\MasterMind.csproj", "{6BC05D22-5178-48C7-94CF-615077B51E26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{685BBCF7-39C3-8D24-F729-73605D73C962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685BBCF7-39C3-8D24-F729-73605D73C962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{685BBCF7-39C3-8D24-F729-73605D73C962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC05D22-5178-48C7-94CF-615077B51E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC05D22-5178-48C7-94CF-615077B51E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC05D22-5178-48C7-94CF-615077B51E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC05D22-5178-48C7-94CF-615077B51E26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
