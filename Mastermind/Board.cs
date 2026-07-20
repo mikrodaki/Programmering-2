@@ -135,7 +135,7 @@ namespace MasterMind
 				firstX += 4;
 			}
 			Console.ForegroundColor = ConsoleColor.White;
-			currentRow += 12;
+			currentRow += 1;
 		}
 
 		/*
