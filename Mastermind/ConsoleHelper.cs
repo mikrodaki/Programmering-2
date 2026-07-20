@@ -77,6 +77,64 @@
 			}
 		}
 
+		public static string ReadIntString(string text, int x, int y)
+		{
+			string emptyString = string.Empty;
+			while (true)
+			{
+				Console.SetCursorPosition(x, y);
+				Console.Write(new string(' ', 50));
+				Console.SetCursorPosition(x, y);
+				Console.Write(text);
+				string? input = Console.ReadLine();
+
+				if (!string.IsNullOrEmpty(input))
+				{
+					bool ok = true;
+
+					for (int i = 0; i < input.Length; i++)
+					{
+						char c = input[i];
+						if (!char.IsDigit(c))
+						{
+							ok = false;
+							break;
+						}
+						else if (c < '1' || c > '6')
+						{
+							ok = false;
+							break;
+						}
+					}
+					if (input.Length == 4 && IsUnique(input))
+						return input;
+				}
+
+				Console.SetCursorPosition(x, y + 1);
+				Console.ForegroundColor = ConsoleColor.DarkRed;
+				Console.WriteLine("Felaktig inmatning");
+				Console.ReadKey();
+				Console.SetCursorPosition(x, y + 1);
+				Console.Write(new string(' ', 60));
+				Console.ForegroundColor = ConsoleColor.White;
+			}
+		}
+
+		public static bool IsUnique(string text) 
+		{
+			for (int i = 0; i < text.Length; i++) 
+			{	
+				char c = text[i];
+				for (int j = i; j < text.Length - 1; j++) 
+				{ 
+					char d = text[j + 1];
+					if (c == d)
+						return false;
+				}
+			}
+			return true;
+		}
+
 		public static void ClearScreen(string heading)
 		{
 			Console.Clear();

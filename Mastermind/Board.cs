@@ -1,9 +1,14 @@
-﻿namespace MasterMind
+﻿using App.IO;
+
+namespace MasterMind
 {
 	class Board     // Lägg klassen i separat fil
 	{
 		private int currentRow = 0;
 		private static Random random = new Random();
+		private int firstX = 49;
+		private int firstY = 29;
+		private int firstYHints = 29;
 
 		/*
 		 * Draw
@@ -28,6 +33,40 @@
 			}
 
 			DrawPart(47, 30, "╚═══╩═══╩═══╩═══╝ ╚═╩═╩═╩═╝");
+			Console.SetCursorPosition(39, 32);
+			for (int i = 1; i <= Constants.NoOfColors; i++)
+			{
+				//Console.BackgroundColor = ConsoleColor.Black;
+				Console.ForegroundColor = ConsoleColor.White;
+				Console.Write($" {i} = ");
+				Console.BackgroundColor = GetConsoleColor(i);
+				Console.Write("  ");
+				Console.BackgroundColor = ConsoleColor.DarkGray;
+				Console.Write(" ");
+			}
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.BackgroundColor = ConsoleColor.DarkGray;
+		}
+
+		private ConsoleColor GetConsoleColor(int color)
+		{
+			switch (color)
+			{
+				case Constants.Yellow:
+					return ConsoleColor.Yellow;
+				case Constants.Green:
+					return ConsoleColor.Green;
+				case Constants.Red:
+					return ConsoleColor.Red;
+				case Constants.Blue:
+					return ConsoleColor.Blue;
+				case Constants.Magenta:
+					return ConsoleColor.Magenta;
+				case Constants.Cyan:
+					return ConsoleColor.Cyan;
+				default:
+					return ConsoleColor.White;
+			}
 		}
 
 		/* 
@@ -41,12 +80,12 @@
 		public List<int> GenerateTargetColors()
 		{
 			List<int> colors = new List<int>();
-			while (colors.Count < 4) 
-			{ 
+			while (colors.Count < 4)
+			{
 				int color = random.Next(1, 7);
 
-				if (!colors.Contains(color)) 
-				{ 
+				if (!colors.Contains(color))
+				{
 					colors.Add(color);
 				}
 			}
@@ -63,7 +102,15 @@
 		 */
 		public List<int> GetUserInput()
 		{
-			return new List<int>();
+			string userInput = string.Empty;
+			while (string.IsNullOrEmpty(userInput))
+			{
+				userInput = ConsoleHelper.ReadIntString("Ange fyra siffror enligt färgerna ovan: ", Constants.INPUT_X_SCREEN_POS, Constants.INPUT_Y_SCREEN_POS);
+			}
+			List<int> userInputList = new List<int>();
+			foreach (char c in userInput)
+				userInputList.Add(c - '0');
+			return userInputList;
 		}
 
 		/*
@@ -76,6 +123,19 @@
 		 */
 		public void DisplayQuess(List<int> guessColors)
 		{
+			firstX = 48;
+			if (currentRow != 0)
+				firstY -= 2;
+
+			foreach (int item in guessColors)
+			{
+				Console.ForegroundColor = GetConsoleColor(item);
+				string part = "███";
+				DrawPart(firstX, firstY, part);
+				firstX += 4;
+			}
+			Console.ForegroundColor = ConsoleColor.White;
+			currentRow++;
 		}
 
 		/*
@@ -93,6 +153,87 @@
 		 */
 		public void DisplayHints(List<int> guessColors, List<int> targetColors)
 		{
+			List<int> hintsColorsInt = new List<int>();
+			int numberOfWhites = 0;
+			List<ConsoleColor> hintColors = new List<ConsoleColor>();
+
+			for (int i = 0; i < guessColors.Count; i++)
+			{
+				int guessColor = guessColors[i];
+				if (guessColor == targetColors[i])
+				{
+					hintsColorsInt.Add(2);
+					hintColors.Add(ConsoleColor.Black);
+				}
+				else
+				{
+					if (ColorExists(guessColor, guessColors, targetColors))
+					{
+						hintsColorsInt.Add(1);
+						numberOfWhites++;
+						hintColors.Add(ConsoleColor.White);
+					}
+					else
+					{
+						hintsColorsInt.Add(0);
+						hintColors.Add(ConsoleColor.DarkGray);
+					}
+				}
+			}
+
+			for (int j = 0; j < hintColors.Count; j++)
+			{
+				if (hintColors[j] == ConsoleColor.White)
+				{
+					hintColors[j] = ConsoleColor.DarkGray;
+				}
+			}
+
+			for (int j = 0; j < hintColors.Count; j++)
+			{
+				if (numberOfWhites == 0)
+					break;
+				if (hintColors[j] == ConsoleColor.Black)
+				{
+					continue;
+				}
+				else if (hintColors[j] == ConsoleColor.DarkGray)
+					hintColors[j] = ConsoleColor.White;
+				numberOfWhites--;
+			}
+
+			Console.SetCursorPosition(0, 3);
+			foreach (int i in hintsColorsInt)
+			{
+				Console.Write(i);
+			}
+
+			firstX = 66;
+			if (currentRow != 0)
+				firstYHints -= 2;
+
+			foreach (ConsoleColor item in hintColors)
+			{
+				Console.ForegroundColor = item;
+				string part = "█";
+				DrawPart(firstX, firstY, part);
+				firstX += 2;
+			}
+			Console.ForegroundColor = ConsoleColor.White;
+		}
+
+		private bool ColorExists(int color, List<int> guessColors, List<int> targetColors)
+		{
+			for (int i = 0; i < guessColors.Count; i++)
+			{
+				int guessColor = guessColors[i];
+				for (int j = 0; j < targetColors.Count; j++)
+				{
+					if (color == targetColors[j])
+						return true;
+				}
+			}
+			return false;
 		}
 
 		/*
@@ -104,7 +245,19 @@
 		 */
 		public bool IsCorrect(List<int> guessColors, List<int> targetColors)
 		{
-			return true;
+			bool same = true;
+
+			if (guessColors.Count != targetColors.Count)
+				same = false;
+			else
+			{
+				for (int i = 0; i < guessColors.Count; i++)
+				{
+					if (guessColors[i] != targetColors[i])
+						same = false;
+				}
+			}
+			return same;
 		}
 
 		/*
@@ -115,7 +268,7 @@
 		 */
 		public bool IsLastRow()
 		{
-			return true;   // Temporär rad
+			return currentRow == 12;
 		}
 
 		/* 

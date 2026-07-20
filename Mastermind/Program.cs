@@ -4,60 +4,50 @@ namespace MasterMind
 {
 	class Program
 	{
-		private static List<int> key = new List<int>();
+		private static List<int> targetColors = new List<int>();
+		private static bool gameWon = false;
+
 		static void Main(string[] args)
 		{
 			Console.SetWindowSize(120, 40);
-			Console.BackgroundColor = ConsoleColor.DarkGreen;
+			Console.BackgroundColor = ConsoleColor.DarkGray;
 			Console.Clear();
 
 			Board board = new Board();
 			board.Draw();
 			foreach (var item in board.GenerateTargetColors())
 			{
-				key.Add(item);
+				targetColors.Add(item);
 			}
-			GetUserInput();
-			Console.ReadKey();
-		}
-
-		private static void GetUserInput()
-		{
-			WriteAt(37, 32, "Ange fyra färger: ");
-		}
-
-		/*
-         * WriteAt
-         * 
-         * Help method that writes a text 
-         * at a specific coordinate
-         * 
-         */
-		static void WriteAt(int x, int y, string text)
-		{
-			Console.SetCursorPosition(x, y);
-			Console.Write(text);
-		}
-
-		static ConsoleColor ReturnColorFromInt(int color)
-		{
-			switch (color)
+			Console.SetCursorPosition(0, 0);
+			Console.Write("Key: ");
+			foreach (int i in targetColors)
 			{
-				case Constants.Yellow:
-					return ConsoleColor.Yellow;
-				case Constants.Green:
-					return ConsoleColor.Green;
-				case Constants.Red:
-					return ConsoleColor.Red;
-				case Constants.Blue:
-					return ConsoleColor.Blue;
-				case Constants.Magenta: 
-					return ConsoleColor.Magenta;
-				case Constants.Cyan:
-					return ConsoleColor.Cyan;
-				default:
-					return ConsoleColor.White;
+				Console.Write(i);
 			}
+			while (!board.IsLastRow() && !gameWon)
+			{
+				List<int> userGuess = board.GetUserInput();
+				Console.SetCursorPosition(0, 1);
+				string userGuessString = string.Empty;
+				foreach (var item in userGuess) 
+				{
+					userGuessString += item;
+				}
+				Console.Write("Guess: " + userGuessString);
+				if (board.IsCorrect(userGuess, targetColors))
+					gameWon = true;
+				board.DisplayQuess(userGuess);
+				board.DisplayHints(userGuess, targetColors);
+			}
+			Console.SetCursorPosition(Constants.INPUT_X_SCREEN_POS, Constants.INPUT_Y_SCREEN_POS);
+			Console.Write(new string(' ', 60));
+			Console.SetCursorPosition(Constants.INPUT_X_SCREEN_POS, Constants.INPUT_Y_SCREEN_POS);
+			if (gameWon)
+				Console.WriteLine("Du klarade spelet!");
+			else
+				Console.WriteLine("Du förlorade.");
+			Console.ReadKey();
 		}
 	}
 }
