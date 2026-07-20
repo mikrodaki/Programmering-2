@@ -1,4 +1,5 @@
 ﻿using App.IO;
+using System.Runtime.InteropServices;
 
 namespace MasterMind
 {
@@ -8,7 +9,6 @@ namespace MasterMind
 		private static Random random = new Random();
 		private int firstX = 49;
 		private int firstY = 29;
-		private int firstYHints = 29;
 
 		/*
 		 * Draw
@@ -135,7 +135,7 @@ namespace MasterMind
 				firstX += 4;
 			}
 			Console.ForegroundColor = ConsoleColor.White;
-			currentRow++;
+			currentRow += 12;
 		}
 
 		/*
@@ -153,7 +153,7 @@ namespace MasterMind
 		 */
 		public void DisplayHints(List<int> guessColors, List<int> targetColors)
 		{
-			List<int> hintsColorsInt = new List<int>();
+			List<int> hintColorsInt = new List<int>();
 			int numberOfWhites = 0;
 			List<ConsoleColor> hintColors = new List<ConsoleColor>();
 
@@ -162,20 +162,20 @@ namespace MasterMind
 				int guessColor = guessColors[i];
 				if (guessColor == targetColors[i])
 				{
-					hintsColorsInt.Add(2);
+					hintColorsInt.Add(2);
 					hintColors.Add(ConsoleColor.Black);
 				}
 				else
 				{
-					if (ColorExists(guessColor, guessColors, targetColors))
+					if (ColorExists(guessColor, targetColors))
 					{
-						hintsColorsInt.Add(1);
+						hintColorsInt.Add(1);
 						numberOfWhites++;
 						hintColors.Add(ConsoleColor.White);
 					}
 					else
 					{
-						hintsColorsInt.Add(0);
+						hintColorsInt.Add(0);
 						hintColors.Add(ConsoleColor.DarkGray);
 					}
 				}
@@ -203,14 +203,12 @@ namespace MasterMind
 			}
 
 			Console.SetCursorPosition(0, 3);
-			foreach (int i in hintsColorsInt)
+			foreach (int i in hintColorsInt)
 			{
 				Console.Write(i);
 			}
 
 			firstX = 66;
-			if (currentRow != 0)
-				firstYHints -= 2;
 
 			foreach (ConsoleColor item in hintColors)
 			{
@@ -222,11 +220,53 @@ namespace MasterMind
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 
-		private bool ColorExists(int color, List<int> guessColors, List<int> targetColors)
+		public void DisplayHintsImproved(List<int> guessColors, List<int> targetColors)
 		{
+			List<ConsoleColor> hintColors = new List<ConsoleColor>();
+			int noOfBlack = 0;
+			int noOfWhite = 0;
+
 			for (int i = 0; i < guessColors.Count; i++)
 			{
-				int guessColor = guessColors[i];
+				int color = guessColors[i];
+				int targetColor = targetColors[i];
+				if (color == targetColor)
+				{
+					noOfBlack++;
+					continue;
+				}
+				if (ColorExists(color, targetColors))
+					noOfWhite++;
+			}
+
+			for (int i = 0; i < noOfBlack; i++)
+			{
+				hintColors.Add(ConsoleColor.Black);
+			}
+
+			for (int i = 0; i < noOfWhite; i++)
+			{
+				hintColors.Add(ConsoleColor.White);
+			}
+
+			firstX = 66;
+			//if (currentRow != 0)
+			//	firstYHints -= 2;
+
+			foreach (ConsoleColor item in hintColors)
+			{
+				Console.ForegroundColor = item;
+				string part = "█";
+				DrawPart(firstX, firstY, part);
+				firstX += 2;
+			}
+			Console.ForegroundColor = ConsoleColor.White;
+		}
+
+		private bool ColorExists(int color, List<int> targetColors)
+		{
+			for (int i = 0; i < targetColors.Count; i++)
+			{
 				for (int j = 0; j < targetColors.Count; j++)
 				{
 					if (color == targetColors[j])
@@ -277,6 +317,20 @@ namespace MasterMind
 		 * Draws the part at a specific coordinate.
 		 * 
 		 */
+
+		public void DrawKey(List<int> targetColors)
+		{
+			int x = 48;
+			int y = 5;
+			foreach (int item in targetColors)
+			{
+				Console.ForegroundColor = GetConsoleColor(item);
+				string part = "███";
+				DrawPart(x, y, part);
+				x += 4;
+			}
+			Console.CursorVisible = false;
+		}
 		private void DrawPart(int x, int y, string part)
 		{
 			Console.SetCursorPosition(x, y);

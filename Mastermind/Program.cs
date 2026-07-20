@@ -34,19 +34,22 @@ namespace MasterMind
 				{
 					userGuessString += item;
 				}
-				Console.Write("Guess: " + userGuessString);
+				Console.Write("Gss: " + userGuessString);
 				if (board.IsCorrect(userGuess, targetColors))
 					gameWon = true;
 				board.DisplayQuess(userGuess);
-				board.DisplayHints(userGuess, targetColors);
+				board.DisplayHintsImproved(userGuess, targetColors);
 			}
 			Console.SetCursorPosition(Constants.INPUT_X_SCREEN_POS, Constants.INPUT_Y_SCREEN_POS);
 			Console.Write(new string(' ', 60));
 			Console.SetCursorPosition(Constants.INPUT_X_SCREEN_POS, Constants.INPUT_Y_SCREEN_POS);
 			if (gameWon)
 				Console.WriteLine("Du klarade spelet!");
-			else
+			else 
+			{ 
 				Console.WriteLine("Du förlorade.");
+				board.DrawKey(targetColors);
+			}
 			Console.ReadKey();
 		}
 	}
