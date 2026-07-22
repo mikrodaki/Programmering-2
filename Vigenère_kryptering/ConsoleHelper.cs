@@ -106,7 +106,7 @@
 
 		public static bool ExistsInAlphabet(char c)
 		{
-			string alphabet = "abcdefghijklmnopqrstuvxyzåäö";
+			string alphabet = "abcdefghijklmnopqrstuvwxyzåäö";
 			for (int i = 0; i < alphabet.Length; i++)
 			{
 				if (c == alphabet[i])

@@ -4,14 +4,14 @@ namespace Vigenère_kryptering
 {
 	internal class Program
 	{
-		static string alphabet = "abcdefghijklmnopqrstuvxyzåäö";
+		static string alphabet = "abcdefghijklmnopqrstuvwxyzåäö";
 		static string plaintext = string.Empty;
 		static string key = string.Empty;
 		static string encryptedText = string.Empty;
 		static string decryptedText = string.Empty;
 		static void Main(string[] args)
 		{
-			ConsoleHelper.ClearScreen("VIGENÈREKRYPTERING");
+			ConsoleHelper.ClearScreen("VIGENÈRE-KRYPTERING");
 			plaintext = ConsoleHelper.ReadStringOnlyLowerCase("Ange en sträng med bara bokstäver små bokstäver: ");
 			key = ConsoleHelper.ReadStringOnlyLowerCase("Ange en krypteringsnyckel med bara små bokstäver: ");
 			Console.WriteLine();
@@ -57,25 +57,33 @@ namespace Vigenère_kryptering
 		{
 			int newIndex = plainIndex - keyIndex;
 
-			if (newIndex < 0)
-			{
-				newIndex = Math.Abs(newIndex);
-				newIndex = alphabet.Length - newIndex;
-			}
+			//if (newIndex < 0)
+			//{
+			//	newIndex = Math.Abs(newIndex);
+			//	newIndex = alphabet.Length - newIndex;
+			//}
+
+			// Samma som ovan
+			newIndex = (plainIndex - keyIndex + alphabet.Length) % alphabet.Length;
 
 			return alphabet[newIndex];
 		}
+
 		private static char GetEncryptedChar(int plainIndex, int keyIndex)
 		{
 			int newIndex = plainIndex + keyIndex;
 
-			if (newIndex > alphabet.Length - 1)
-			{
-				newIndex = newIndex % alphabet.Length;
-			}
+			//if (newIndex > alphabet.Length - 1)
+			//{
+			//	newIndex = newIndex % alphabet.Length;
+			//}
+
+			// Samma som ovan
+			newIndex %= alphabet.Length;
 
 			return alphabet[newIndex];
 		}
+
 		private static int GetIndex(char c)
 		{
 			for (int i = 0; i < alphabet.Length; i++)
