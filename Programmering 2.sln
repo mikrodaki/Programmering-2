@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicles", "Vehicles\Vehicl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.10 - PascalsTriangel", "PascalsTriangel\3.10 - PascalsTriangel.csproj", "{30B4146C-4D8F-40E4-B1BE-A514D91D920B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3 - Förskjutningskryptering", "3.12 - Vinegerekryptering\3 - Förskjutningskryptering.csproj", "{C72BE7D6-4FB1-4CC5-81A1-2D09F7C81210}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{30B4146C-4D8F-40E4-B1BE-A514D91D920B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B4146C-4D8F-40E4-B1BE-A514D91D920B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B4146C-4D8F-40E4-B1BE-A514D91D920B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72BE7D6-4FB1-4CC5-81A1-2D09F7C81210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72BE7D6-4FB1-4CC5-81A1-2D09F7C81210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72BE7D6-4FB1-4CC5-81A1-2D09F7C81210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72BE7D6-4FB1-4CC5-81A1-2D09F7C81210}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
