@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3 - Förskjutningskrypterin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vigenère_kryptering", "Vigenère_kryptering\Vigenère_kryptering.csproj", "{8AA8C978-A50C-4D53-B438-1DF3A81ABCD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_Movies", "3_Movies\3_Movies.csproj", "{222AF869-CC5F-4EE1-AA9B-4A479B79BB67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{8AA8C978-A50C-4D53-B438-1DF3A81ABCD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AA8C978-A50C-4D53-B438-1DF3A81ABCD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AA8C978-A50C-4D53-B438-1DF3A81ABCD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{222AF869-CC5F-4EE1-AA9B-4A479B79BB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222AF869-CC5F-4EE1-AA9B-4A479B79BB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222AF869-CC5F-4EE1-AA9B-4A479B79BB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222AF869-CC5F-4EE1-AA9B-4A479B79BB67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
