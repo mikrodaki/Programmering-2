@@ -10,10 +10,7 @@ namespace Movies
 		{
 			InitializeComponent();
 			LoadSampleData();
-			foreach (Movie movie in movies)
-			{
-				listBoxMovies.Items.Add($"{movie.Title}");
-			}
+
 			comboBoxGenreSearch.Items.Add("All genres");
 			foreach (string genre in genres)
 			{
@@ -114,7 +111,7 @@ namespace Movies
 			listBoxMovies.Items.Clear();
 			foreach (Movie movie in movies)
 			{
-				listBoxMovies.Items.Add($"{movie.Title}");
+				listBoxMovies.Items.Add($"{movie.ToString()}");
 			}
 		}
 
@@ -135,17 +132,118 @@ namespace Movies
 				return;
 			string genre = comboBoxGenreSearch.SelectedItem.ToString();
 			listBoxMovies.Items.Clear();
-			if (genre == "All genres") 
+			if (genre == "All genres")
 			{
 				UpdateMovieList();
 				return;
 			}
-			foreach (Movie movie in movies) 
-			{ 
-				if (movie.GetType().Name == genre)
-					listBoxMovies.Items.Add(movie.Title);
+			foreach (Movie movie in movies)
+			{
+				if (movie.GetType().Name == genre )
+					listBoxMovies.Items.Add(movie.ToString());
 			}
-			
 		}
+
+		//private void buttonFreeTextSearch_Click(object sender, EventArgs e)
+		//{
+		//	listBoxMovies.Items.Clear();
+
+		//	string searchText = textBoxFreeTextSearch.Text;
+
+		//	if (string.IsNullOrEmpty(searchText))
+		//		return;
+
+		//	searchText = searchText.ToLower();
+
+		//	if (searchText.StartsWith('*') && searchText.EndsWith('*'))
+		//	{
+		//		searchText = searchText.Trim('*');
+		//		foreach (Movie movie in movies)
+		//		{
+		//			string movieTitle = movie.Title.ToLower();
+		//			if (movieTitle.Contains(searchText))
+		//				listBoxMovies.Items.Add(movie.Title);
+		//		}
+		//		return;
+		//	}
+
+		//	if (searchText.EndsWith('*'))
+		//	{
+		//		searchText = searchText.Trim('*');
+		//		foreach (Movie movie in movies)
+		//		{
+		//			string movieTitle = movie.Title.ToLower();
+		//			if (movieTitle.StartsWith(searchText))
+		//				listBoxMovies.Items.Add(movie.Title);
+		//		}
+		//		return;
+		//	}
+
+		//	if (searchText.StartsWith('*'))
+		//	{
+		//		searchText = searchText.Trim('*');
+		//		foreach (Movie movie in movies)
+		//		{
+		//			string movieTitle = movie.Title.ToLower();
+		//			if (movieTitle.EndsWith(searchText))
+		//				listBoxMovies.Items.Add(movie.Title);
+		//		}
+		//		return;
+		//	}
+
+		//	foreach (Movie movie in movies)
+		//	{
+		//		string movieTitle = movie.Title.ToLower();
+		//		if (movieTitle == searchText)
+		//			listBoxMovies.Items.Add(movie.Title);
+		//	}
+		//}
+
+
+		// Alternativ verion av chatGPT
+		private void buttonFreeTextSearch_Click(object sender, EventArgs e)
+		{
+			listBoxMovies.Items.Clear();
+
+			string searchText = textBoxFreeTextSearch.Text.ToLower();
+
+			if (string.IsNullOrEmpty(searchText))
+				return;
+
+			bool startsWithStar = searchText.StartsWith('*');
+			bool endsWithStar = searchText.EndsWith('*');
+
+			searchText = searchText.Trim('*');
+
+			if (string.IsNullOrEmpty(searchText))
+				return;
+
+			foreach (Movie movie in movies)
+			{
+				string movieTitle = movie.Title.ToLower();
+				bool match = false;
+
+				if (startsWithStar && endsWithStar)
+				{
+					match = movieTitle.Contains(searchText);
+				}
+				else if (endsWithStar)
+				{
+					match = movieTitle.StartsWith(searchText);
+				}
+				else if (startsWithStar)
+				{
+					match = movieTitle.EndsWith(searchText);
+				}
+				else
+				{
+					match = movieTitle == searchText;
+				}
+
+				if (match)
+					listBoxMovies.Items.Add(movie.ToString());
+			}
+		}
+
 	}
 }

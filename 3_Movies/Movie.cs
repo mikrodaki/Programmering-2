@@ -15,5 +15,10 @@
 			this.director = director;
 			this.year = year;
 		}
+
+		public override string ToString() 
+		{ 
+			return Title + " - " + Director + " - " + Year + " - " + this.GetType().Name;
+		}
 	}
 }

@@ -44,32 +44,37 @@
 			label8 = new Label();
 			comboBoxGenreSearch = new ComboBox();
 			label9 = new Label();
+			label10 = new Label();
+			textBoxFreeTextSearch = new TextBox();
+			buttonFreeTextSearch = new Button();
 			SuspendLayout();
 			// 
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Location = new Point(20, 22);
+			label1.Location = new Point(24, 28);
+			label1.Margin = new Padding(2, 0, 2, 0);
 			label1.Name = "label1";
-			label1.Size = new Size(0, 25);
+			label1.Size = new Size(0, 20);
 			label1.TabIndex = 0;
 			// 
 			// listBoxMovies
 			// 
 			listBoxMovies.FormattingEnabled = true;
-			listBoxMovies.ItemHeight = 25;
-			listBoxMovies.Location = new Point(20, 76);
+			listBoxMovies.Location = new Point(22, 173);
+			listBoxMovies.Margin = new Padding(2);
 			listBoxMovies.Name = "listBoxMovies";
-			listBoxMovies.Size = new Size(238, 429);
+			listBoxMovies.Size = new Size(409, 344);
 			listBoxMovies.TabIndex = 1;
 			// 
 			// label2
 			// 
 			label2.AutoSize = true;
 			label2.Font = new Font("Segoe UI", 9F);
-			label2.Location = new Point(331, 155);
+			label2.Location = new Point(520, 304);
+			label2.Margin = new Padding(2, 0, 2, 0);
 			label2.Name = "label2";
-			label2.Size = new Size(133, 25);
+			label2.Size = new Size(112, 20);
 			label2.TabIndex = 2;
 			label2.Text = "Lägg till ny film";
 			// 
@@ -77,82 +82,92 @@
 			// 
 			label3.AutoSize = true;
 			label3.Font = new Font("Segoe UI", 9F);
-			label3.Location = new Point(18, 11);
+			label3.Location = new Point(22, 19);
+			label3.Margin = new Padding(2, 0, 2, 0);
 			label3.Name = "label3";
-			label3.Size = new Size(0, 25);
+			label3.Size = new Size(0, 20);
 			label3.TabIndex = 3;
 			// 
 			// textBoxTitle
 			// 
-			textBoxTitle.Location = new Point(335, 222);
+			textBoxTitle.Location = new Point(523, 358);
+			textBoxTitle.Margin = new Padding(2);
 			textBoxTitle.Name = "textBoxTitle";
-			textBoxTitle.Size = new Size(238, 31);
+			textBoxTitle.Size = new Size(191, 27);
 			textBoxTitle.TabIndex = 4;
 			// 
 			// label4
 			// 
 			label4.AutoSize = true;
-			label4.Location = new Point(331, 194);
+			label4.Location = new Point(520, 335);
+			label4.Margin = new Padding(2, 0, 2, 0);
 			label4.Name = "label4";
-			label4.Size = new Size(44, 25);
+			label4.Size = new Size(38, 20);
 			label4.TabIndex = 5;
 			label4.Text = "Titel";
 			// 
 			// label5
 			// 
 			label5.AutoSize = true;
-			label5.Location = new Point(449, 338);
+			label5.Location = new Point(614, 450);
+			label5.Margin = new Padding(2, 0, 2, 0);
 			label5.Name = "label5";
-			label5.Size = new Size(58, 25);
+			label5.Size = new Size(48, 20);
 			label5.TabIndex = 6;
 			label5.Text = "Genre";
 			// 
 			// comboBoxGenre
 			// 
 			comboBoxGenre.FormattingEnabled = true;
-			comboBoxGenre.Location = new Point(449, 366);
+			comboBoxGenre.Location = new Point(614, 473);
+			comboBoxGenre.Margin = new Padding(2);
 			comboBoxGenre.Name = "comboBoxGenre";
-			comboBoxGenre.Size = new Size(182, 33);
+			comboBoxGenre.Size = new Size(146, 28);
 			comboBoxGenre.TabIndex = 7;
 			// 
 			// label6
 			// 
 			label6.AutoSize = true;
-			label6.Location = new Point(331, 264);
+			label6.Location = new Point(520, 391);
+			label6.Margin = new Padding(2, 0, 2, 0);
 			label6.Name = "label6";
-			label6.Size = new Size(71, 25);
+			label6.Size = new Size(59, 20);
 			label6.TabIndex = 8;
 			label6.Text = "Regisör";
 			// 
 			// textBoxDirector
 			// 
-			textBoxDirector.Location = new Point(335, 292);
+			textBoxDirector.Location = new Point(523, 414);
+			textBoxDirector.Margin = new Padding(2);
 			textBoxDirector.Name = "textBoxDirector";
-			textBoxDirector.Size = new Size(238, 31);
+			textBoxDirector.Size = new Size(191, 27);
 			textBoxDirector.TabIndex = 9;
 			// 
 			// label7
 			// 
 			label7.AutoSize = true;
-			label7.Location = new Point(335, 338);
+			label7.Location = new Point(523, 450);
+			label7.Margin = new Padding(2, 0, 2, 0);
 			label7.Name = "label7";
-			label7.Size = new Size(30, 25);
+			label7.Size = new Size(24, 20);
 			label7.TabIndex = 11;
 			label7.Text = "År";
 			// 
 			// textBoxYear
 			// 
-			textBoxYear.Location = new Point(335, 366);
+			textBoxYear.Location = new Point(523, 473);
+			textBoxYear.Margin = new Padding(2);
 			textBoxYear.Name = "textBoxYear";
-			textBoxYear.Size = new Size(90, 31);
+			textBoxYear.Size = new Size(73, 27);
 			textBoxYear.TabIndex = 10;
 			// 
 			// buttonAddMovie
 			// 
 			buttonAddMovie.Font = new Font("Segoe UI", 9F);
-			buttonAddMovie.Location = new Point(647, 366);
+			buttonAddMovie.Location = new Point(773, 473);
+			buttonAddMovie.Margin = new Padding(2);
 			buttonAddMovie.Name = "buttonAddMovie";
-			buttonAddMovie.Size = new Size(112, 34);
+			buttonAddMovie.Size = new Size(90, 27);
 			buttonAddMovie.TabIndex = 12;
 			buttonAddMovie.Text = "Lägg till";
 			buttonAddMovie.UseVisualStyleBackColor = true;
@@ -161,34 +176,66 @@
 			// label8
 			// 
 			label8.AutoSize = true;
-			label8.Location = new Point(20, 11);
+			label8.Location = new Point(24, 19);
+			label8.Margin = new Padding(2, 0, 2, 0);
 			label8.Name = "label8";
-			label8.Size = new Size(58, 25);
+			label8.Size = new Size(48, 20);
 			label8.TabIndex = 13;
 			label8.Text = "Genre";
 			// 
 			// comboBoxGenreSearch
 			// 
 			comboBoxGenreSearch.FormattingEnabled = true;
-			comboBoxGenreSearch.Location = new Point(84, 12);
+			comboBoxGenreSearch.Location = new Point(86, 20);
+			comboBoxGenreSearch.Margin = new Padding(2);
 			comboBoxGenreSearch.Name = "comboBoxGenreSearch";
-			comboBoxGenreSearch.Size = new Size(182, 33);
+			comboBoxGenreSearch.Size = new Size(158, 28);
 			comboBoxGenreSearch.TabIndex = 15;
 			comboBoxGenreSearch.SelectedIndexChanged += comboBoxGenreSearch_SelectedIndexChanged;
 			// 
 			// label9
 			// 
 			label9.AutoSize = true;
-			label9.Location = new Point(295, 41);
+			label9.Location = new Point(244, 43);
+			label9.Margin = new Padding(2, 0, 2, 0);
 			label9.Name = "label9";
-			label9.Size = new Size(0, 25);
+			label9.Size = new Size(0, 20);
 			label9.TabIndex = 14;
+			// 
+			// label10
+			// 
+			label10.AutoSize = true;
+			label10.Location = new Point(22, 101);
+			label10.Name = "label10";
+			label10.Size = new Size(50, 20);
+			label10.TabIndex = 16;
+			label10.Text = "Fritext";
+			// 
+			// textBoxFreeTextSearch
+			// 
+			textBoxFreeTextSearch.Location = new Point(78, 101);
+			textBoxFreeTextSearch.Name = "textBoxFreeTextSearch";
+			textBoxFreeTextSearch.Size = new Size(158, 27);
+			textBoxFreeTextSearch.TabIndex = 17;
+			// 
+			// buttonFreeTextSearch
+			// 
+			buttonFreeTextSearch.Location = new Point(252, 101);
+			buttonFreeTextSearch.Name = "buttonFreeTextSearch";
+			buttonFreeTextSearch.Size = new Size(56, 29);
+			buttonFreeTextSearch.TabIndex = 18;
+			buttonFreeTextSearch.Text = "Sök";
+			buttonFreeTextSearch.UseVisualStyleBackColor = true;
+			buttonFreeTextSearch.Click += buttonFreeTextSearch_Click;
 			// 
 			// Form1
 			// 
-			AutoScaleDimensions = new SizeF(10F, 25F);
+			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(778, 605);
+			ClientSize = new Size(926, 574);
+			Controls.Add(buttonFreeTextSearch);
+			Controls.Add(textBoxFreeTextSearch);
+			Controls.Add(label10);
 			Controls.Add(comboBoxGenreSearch);
 			Controls.Add(label9);
 			Controls.Add(label8);
@@ -205,8 +252,10 @@
 			Controls.Add(label2);
 			Controls.Add(listBoxMovies);
 			Controls.Add(label1);
+			Margin = new Padding(2);
 			Name = "Form1";
 			Text = "Filmer";
+			//Load += Form1_Load;
 			Click += Form1_Click;
 			ResumeLayout(false);
 			PerformLayout();
@@ -230,5 +279,8 @@
 		private Label label8;
 		private ComboBox comboBoxGenreSearch;
 		private Label label9;
+		private Label label10;
+		private TextBox textBoxFreeTextSearch;
+		private Button buttonFreeTextSearch;
 	}
 }
