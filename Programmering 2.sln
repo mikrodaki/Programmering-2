@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3 Ticket", "3 Ticket\3 Tick
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.21", "3.21\3.21.csproj", "{7261A18C-B5CA-4059-BE17-222BB9278C5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sliding puzzle", "Sliding puzzle\Sliding puzzle.csproj", "{3BFAA600-B8C7-42DA-BE16-39623B95B02F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{7261A18C-B5CA-4059-BE17-222BB9278C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7261A18C-B5CA-4059-BE17-222BB9278C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7261A18C-B5CA-4059-BE17-222BB9278C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFAA600-B8C7-42DA-BE16-39623B95B02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFAA600-B8C7-42DA-BE16-39623B95B02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFAA600-B8C7-42DA-BE16-39623B95B02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFAA600-B8C7-42DA-BE16-39623B95B02F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
