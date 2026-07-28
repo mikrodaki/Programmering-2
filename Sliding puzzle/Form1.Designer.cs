@@ -32,13 +32,16 @@
 			// 
 			// Form1
 			// 
-			AutoScaleDimensions = new SizeF(8F, 20F);
+			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			AutoSize = true;
-			ClientSize = new Size(800, 450);
+			ClientSize = new Size(700, 338);
+			KeyPreview = true;
+			Margin = new Padding(3, 2, 3, 2);
 			MaximizeBox = false;
 			Name = "Form1";
 			Text = "Sliding tiles puzzle";
+			KeyDown += Form1_KeyDown;
 			ResumeLayout(false);
 		}
 
