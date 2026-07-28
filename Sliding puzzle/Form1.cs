@@ -39,7 +39,7 @@ namespace Sliding_puzzle
 			 * random moves to make it a little easier. 
 			 *
 			 */
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i < 50; i++)
 			{
 				RandomMove(random.Next(4));
 			}
