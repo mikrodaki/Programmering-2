@@ -4,36 +4,61 @@
 	{
 		static void Main(string[] args)
 		{
-			TrainTicket c = new TrainTicket(1300, "Göteborg");
-			c.PrintPrice();
-			c.PrintDestination();
-			Console.ReadKey();
-		}
-	}
+			//double? result = FactorialDouble(50243782347);
+			//Console.WriteLine(result?.ToString() ?? "null");
+			Console.WriteLine(Pow(5, -3));
 
-	abstract class Ticket
-	{
-		public int price;
-		public string destination;
+			static int Factorial(int n)
+			{
+				if (n == 1)
+					return 1;
 
-		public abstract void PrintPrice();
+				return n * Factorial(n - 1);
+			}
 
-		public void PrintDestination() 
-		{
-			Console.WriteLine("Destination: " + destination);
-		}
-	}
+			static void CountDown(int n)
+			{
+				if (n < 0)
+					return;
 
-	class TrainTicket : Ticket 
-	{
-		public TrainTicket(int price, string destination)
-		{
-			this.price = price;
-			this.destination = destination;
-		}
-		public override void PrintPrice()
-		{
-			Console.WriteLine("Biljettpris: " + price);
+				Console.WriteLine(n);
+
+				CountDown(n - 1);
+			}
+
+			static int Fibonacci(int n)
+			{
+				Console.WriteLine($"F({n})");
+
+				if (n <= 1)
+					return 1;
+
+				return Fibonacci(n - 1) + Fibonacci(n - 2);
+			}
+
+
+			static double? FactorialDouble(double n)
+			{
+				if (n < 0 || n > 170)
+					return null;
+
+				if (n % 1 != 0)
+					return null;
+
+				if (n <= 1)
+					return 1;
+
+				return n * FactorialDouble(n - 1);
+			}
+
+
+			static int Pow(int a, int n)
+			{
+				if (n < 1)
+					return 1;
+
+				return a * Pow(a, n - 1);
+			}
 		}
 	}
 }

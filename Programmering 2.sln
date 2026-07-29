@@ -53,6 +53,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.21", "3.21\3.21.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sliding puzzle", "Sliding puzzle\Sliding puzzle.csproj", "{3BFAA600-B8C7-42DA-BE16-39623B95B02F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.5 - Rekursiv potens EJ KLAR", "4.5 - Rekursiv potens\4.5 - Rekursiv potens EJ KLAR.csproj", "{5E0E64D8-71C0-4B1A-84C4-3D4D76EEB2B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.6 - Rekursiv palindrom", "4.6 - Rekursiv palindrom\4.6 - Rekursiv palindrom.csproj", "{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +163,14 @@ Global
 		{3BFAA600-B8C7-42DA-BE16-39623B95B02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BFAA600-B8C7-42DA-BE16-39623B95B02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BFAA600-B8C7-42DA-BE16-39623B95B02F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E0E64D8-71C0-4B1A-84C4-3D4D76EEB2B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0E64D8-71C0-4B1A-84C4-3D4D76EEB2B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0E64D8-71C0-4B1A-84C4-3D4D76EEB2B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E0E64D8-71C0-4B1A-84C4-3D4D76EEB2B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
