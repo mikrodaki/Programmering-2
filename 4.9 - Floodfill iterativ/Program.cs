@@ -10,7 +10,7 @@ namespace Maze
 			Console.CursorVisible = false;
 
 			Shape.Draw();
-			Shape.FloodFillIterative(0, 0);
+			Shape.FloodFillIterative(80, 17);
 
 			Console.ReadKey();
 		}
@@ -89,6 +89,7 @@ namespace Maze
 		{
 			List<Point> cellsToVisit = new List<Point>();
 			cellsToVisit.Add(new Point(x, y));
+			int noOfIterrations = 0;
 
 			while (cellsToVisit.Count > 0)
 			{
@@ -99,7 +100,7 @@ namespace Maze
 				y = p.Y;
 
 				Plot(x, y);
-
+				Thread.Sleep(5);
 
 				if (y - 1 >= 0 && shape[y - 1, x] != BLOCK && shape[y - 1, x] != FILLED)
 				{
@@ -120,7 +121,11 @@ namespace Maze
 				{
 					cellsToVisit.Add(new Point(x - 1, y));
 				}
+				noOfIterrations++;
 			}
+			Console.SetCursorPosition(0, shape.GetLength(0) + 1);
+			Console.ResetColor();
+			Console.WriteLine("Antal iterationer: " + noOfIterrations);
 		}
 
 		private static void Plot(int x, int y)
