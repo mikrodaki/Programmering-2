@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Diagnostics.Metrics;
-using System.Reflection;
-using System.Threading;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Drawing;
 
 namespace Maze
 {
@@ -13,16 +10,11 @@ namespace Maze
 			Console.CursorVisible = false;
 
 			Shape.Draw();
-			Shape.FloodFill(85, 19);
-			Console.SetCursorPosition(0, Shape.shape.GetLength(0) + 1);
-			Console.ResetColor();
-			Console.Write("Antal anrop till FloodFill: " + Shape.counter);
+			Shape.FloodFillIterative(0, 0);
 
 			Console.ReadKey();
 		}
 	}
-
-
 
 	/*
      * Shape
@@ -34,9 +26,8 @@ namespace Maze
 	{
 		static int BLOCK = 1;
 		static int FILLED = 2;
-		internal static int counter = 0;
 
-		internal static int[,] shape = new int[,]
+		static int[,] shape = new int[,]
 		{
 			{0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,1,1,0,1,1,1,1,0,0,1,0,0,1,1,1,0,1,1,0,0,0,0,0,0,0,0},
@@ -69,8 +60,6 @@ namespace Maze
 			{0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0}
 		};
 
-
-
 		/*
          * Draw
          * 
@@ -88,14 +77,7 @@ namespace Maze
 						Console.SetCursorPosition(j, i);
 						Console.WriteLine(" ");
 					}
-			
-			
 		}
-
-
-		// Undersök om position vi står på ska fyllas i.Om ja, rita ett block på den positionen och sätt positionen som ifylld i arrayen.
-		// Om positionen ovanför är ett giltigt y-värde i arrayen och positionen inte är ifylld så gör ett rekursivt anrop med koordinaten ovanför. 
-		// Gör på samma sätt för positionen under, till vänster och till höger.
 
 		/*
          * Floodfill
@@ -103,39 +85,53 @@ namespace Maze
          * Fills the shape using recursion starting at position (x, y)
          * 
          */
-		public static void FloodFill(int x, int y)
+		public static void FloodFillIterative(int x, int y)
 		{
-			counter++;
+			List<Point> cellsToVisit = new List<Point>();
+			cellsToVisit.Add(new Point(x, y));
+
+			while (cellsToVisit.Count > 0)
+			{
+				Point p = cellsToVisit[cellsToVisit.Count - 1];
+				cellsToVisit.RemoveAt(cellsToVisit.Count - 1);
+
+				x = p.X;
+				y = p.Y;
+
+				Plot(x, y);
+
+
+				if (y - 1 >= 0 && shape[y - 1, x] != BLOCK && shape[y - 1, x] != FILLED)
+				{
+					cellsToVisit.Add(new Point(x, y - 1));
+				}
+
+				if (x + 1 < shape.GetLength(1) && shape[y, x + 1] != BLOCK && shape[y, x + 1] != FILLED)
+				{
+					cellsToVisit.Add(new Point(x + 1, y));
+				}
+
+				if (y + 1 < shape.GetLength(0) && shape[y + 1, x] != BLOCK && shape[y + 1, x] != FILLED)
+				{
+					cellsToVisit.Add(new Point(x, y + 1));
+				}
+
+				if (x - 1 >= 0 && shape[y, x - 1] != BLOCK && shape[y, x - 1] != FILLED)
+				{
+					cellsToVisit.Add(new Point(x - 1, y));
+				}
+			}
+		}
+
+		private static void Plot(int x, int y)
+		{
 			Console.BackgroundColor = ConsoleColor.Yellow;
-
-			if (shape[y, x] != BLOCK && shape[y, x] != FILLED)
-			{
-				Console.SetCursorPosition(x, y);
-				Console.Write(" ");
-				shape[y, x] = FILLED;
-				Thread.Sleep(100);
-			}
-
-			if (y - 1 >= 0 && shape[y - 1, x] != BLOCK && shape[y - 1, x] != FILLED)
-			{
-				FloodFill(x, y - 1);
-			}
-
-			if (x + 1 < shape.GetLength(1) && shape[y, x + 1] != BLOCK && shape[y, x + 1] != FILLED)
-			{
-				FloodFill(x + 1, y);
-			}
-
-			if (y + 1 < shape.GetLength(0) && shape[y + 1, x] != BLOCK && shape[y + 1, x] != FILLED)
-			{
-				FloodFill(x, y + 1);
-			}
-
-			if (x - 1 >= 0 && shape[y, x - 1] != BLOCK && shape[y, x - 1] != FILLED)
-			{
-				FloodFill(x - 1, y);
-			}
+			Console.SetCursorPosition(x, y);
+			Console.WriteLine(" ");
+			shape[y, x] = FILLED;
 		}
 	}
 }
+
+
 
