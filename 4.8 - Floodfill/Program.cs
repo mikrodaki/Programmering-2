@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
 using System.Reflection;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -11,7 +12,10 @@ namespace Maze
 			Console.CursorVisible = false;
 
 			Shape.Draw();
-			Shape.FloodFill(80, 15);
+			Shape.FloodFill(85, 19);
+			Console.SetCursorPosition(0, Shape.shape.GetLength(0) + 1);
+			Console.ResetColor();
+			Console.Write("Antal anrop till FloodFill: " + Shape.counter);
 
 			Console.ReadKey();
 		}
@@ -28,8 +32,10 @@ namespace Maze
 	class Shape
 	{
 		static int BLOCK = 1;
+		static int FILLED = 2;
+		internal static int counter = 0;
 
-		static int[,] shape = new int[,]
+		internal static int[,] shape = new int[,]
 		{
 			{0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,1,1,0,1,1,1,1,0,0,1,0,0,1,1,1,0,1,1,0,0,0,0,0,0,0,0},
@@ -81,12 +87,14 @@ namespace Maze
 						Console.SetCursorPosition(j, i);
 						Console.WriteLine(" ");
 					}
+			
+			
 		}
 
 
-//		Undersök om position vi står på ska fyllas i.Om ja, rita ett block på den positionen och sätt positionen som ifylld i arrayen.
-//		Om positionen ovanför är ett giltigt y-värde i arrayen och positionen inte är ifylld så gör ett rekursivt anrop med koordinaten ovanför. 
-//		Gör på samma sätt för positionen under, till vänster och till höger.
+		// Undersök om position vi står på ska fyllas i.Om ja, rita ett block på den positionen och sätt positionen som ifylld i arrayen.
+		// Om positionen ovanför är ett giltigt y-värde i arrayen och positionen inte är ifylld så gör ett rekursivt anrop med koordinaten ovanför. 
+		// Gör på samma sätt för positionen under, till vänster och till höger.
 
 		/*
          * Floodfill
@@ -96,7 +104,35 @@ namespace Maze
          */
 		public static void FloodFill(int x, int y)
 		{
-			// ..
+			counter++;
+			Console.BackgroundColor = ConsoleColor.Yellow;
+
+			if (shape[y, x] != BLOCK && shape[y, x] != FILLED)
+			{
+				Console.SetCursorPosition(x, y);
+				Console.Write(" ");
+				shape[y, x] = FILLED;
+			}
+
+			if (y - 1 >= 0 && shape[y - 1, x] != BLOCK && shape[y - 1, x] != FILLED)
+			{
+				FloodFill(x, y - 1);
+			}
+
+			if (x + 1 < shape.GetLength(1) && shape[y, x + 1] != BLOCK && shape[y, x + 1] != FILLED)
+			{
+				FloodFill(x + 1, y);
+			}
+
+			if (y + 1 < shape.GetLength(0) && shape[y + 1, x] != BLOCK && shape[y + 1, x] != FILLED)
+			{
+				FloodFill(x, y + 1);
+			}
+
+			if (x - 1 >= 0 && shape[y, x - 1] != BLOCK && shape[y, x - 1] != FILLED)
+			{
+				FloodFill(x - 1, y);
+			}
 		}
 	}
 }
