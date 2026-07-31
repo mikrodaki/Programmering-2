@@ -57,6 +57,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.5 - Rekursiv potens EJ KL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.6 - Rekursiv palindrom", "4.6 - Rekursiv palindrom\4.6 - Rekursiv palindrom.csproj", "{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.7 - Maze rekursion", "4.7 - Maze rekursion\4.7 - Maze rekursion.csproj", "{817DB009-5287-4442-88F5-1D8FF63143CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.8 - Floodfill", "4.8 - Floodfill\4.8 - Floodfill.csproj", "{178F2498-6C40-41D2-B919-6CBDDC16F9C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +175,14 @@ Global
 		{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{042999A5-0F0A-4A8D-AD2E-1E8194D24B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817DB009-5287-4442-88F5-1D8FF63143CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817DB009-5287-4442-88F5-1D8FF63143CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817DB009-5287-4442-88F5-1D8FF63143CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817DB009-5287-4442-88F5-1D8FF63143CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{178F2498-6C40-41D2-B919-6CBDDC16F9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178F2498-6C40-41D2-B919-6CBDDC16F9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178F2498-6C40-41D2-B919-6CBDDC16F9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178F2498-6C40-41D2-B919-6CBDDC16F9C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
