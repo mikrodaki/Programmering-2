@@ -8,7 +8,7 @@ namespace Minesweeper
 		private readonly int BOARD_HEIGHT = 16;
 		private readonly int CELL_WIDTH = 47;
 		private readonly int CELL_HEIGHT = 47;
-		private readonly int MINES = 10;
+		private readonly int MINES = 2;
 		private readonly int MARGIN = 20;
 		private Cell[,] cells;
 		private Random random = new Random();
@@ -31,7 +31,7 @@ namespace Minesweeper
 			buttonStart.Bottom + (MARGIN * 2) + boardHeight);
 
 			buttonStart.Location = new Point((boardWidth - buttonStart.Width) / 2, MARGIN);
-			labelWinOrLoose.Location = new Point(buttonStart.Left - MARGIN * 5, MARGIN);
+			labelWinOrLoose.Location = new Point(buttonStart.Left - MARGIN * 6, MARGIN);
 		}
 
 		private void buttonStart_Click(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace Minesweeper
 			if (c == null || c.IsClicked)
 				return;
 
-		
+
 
 			if (e.Button == MouseButtons.Right)
 			{
@@ -216,7 +216,10 @@ namespace Minesweeper
 				}
 
 				if (IsWinner())
+				{
 					labelWinOrLoose.Text = "WINNER!";
+					SetWinnerGameBoard();
+				}
 			}
 
 		}
@@ -367,16 +370,29 @@ namespace Minesweeper
 
 		}
 
-		private bool IsWinner() 
+		private bool IsWinner()
 		{
 			int noOfNotClickedCells = 0;
-			foreach (Cell cell in cells) 
-			{ 
+			foreach (Cell cell in cells)
+			{
 				if (cell.IsClicked)
 					noOfNotClickedCells++;
 			}
 
 			return noOfNotClickedCells == BOARD_HEIGHT * BOARD_WIDTH - MINES;
+		}
+
+		private void SetWinnerGameBoard()
+		{
+			foreach (Cell cell in cells)
+			{
+				cell.Enabled = false;
+				if (cell.IsMine)
+				{
+					cell.Image = Image.FromFile("flag.png");
+				}
+				buttonStart.Enabled = true;
+			}
 		}
 
 	}
