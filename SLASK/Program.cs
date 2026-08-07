@@ -61,4 +61,6 @@
 			}
 		}
 	}
+
+    // Ändrade lite i slask för att se om GIT fungerar som det ska.
 }
