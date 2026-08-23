@@ -107,7 +107,7 @@
 			this.rensaToolStripMenuItem.Name = "rensaToolStripMenuItem";
 			this.rensaToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
 			this.rensaToolStripMenuItem.Text = "Rensa historik";
-			this.rensaToolStripMenuItem.Click += new System.EventHandler(this.rensaToolStripMenuItem_Click);
+			this.rensaToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 

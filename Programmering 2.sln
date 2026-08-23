@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.2 ArgumentOutOfRange", "1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.2 - ArgumentOutOfRange 2", "1.2 - ArgumentOutOfRange 2\1.2 - ArgumentOutOfRange 2.csproj", "{284020BD-96D4-4B73-B99A-0DF3FC5402A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.3 - En egen webbläsare 2", "1.3 - En egen webbläsare 2\1.3 - En egen webbläsare 2.csproj", "{D768CA32-0625-4749-9690-D9E46E171E92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +203,10 @@ Global
 		{284020BD-96D4-4B73-B99A-0DF3FC5402A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{284020BD-96D4-4B73-B99A-0DF3FC5402A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{284020BD-96D4-4B73-B99A-0DF3FC5402A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D768CA32-0625-4749-9690-D9E46E171E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D768CA32-0625-4749-9690-D9E46E171E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D768CA32-0625-4749-9690-D9E46E171E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D768CA32-0625-4749-9690-D9E46E171E92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
