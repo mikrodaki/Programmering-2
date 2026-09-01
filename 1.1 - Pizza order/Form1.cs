@@ -12,15 +12,15 @@ namespace _1._1___Pizza_order
             string output = string.Empty;
             output = $"-{comboBoxPizza.Text}";
 
-            foreach (Control c in groupBoxPizzaSize.Controls) 
+            foreach (RadioButton rb in groupBoxPizzaSize.Controls) 
             {
-                if (c is RadioButton rb && rb.Checked)
+                if (rb.Checked)
                     output += "\n-" + rb.Text;
             }
 
-            foreach (Control c in groupBoxExtras.Controls)
+            foreach (CheckBox cb in groupBoxExtras.Controls)
             {
-                if (c is CheckBox cb && cb.Checked)
+                if (cb.Checked)
                     output += "\n-" + cb.Text;
             }
 
