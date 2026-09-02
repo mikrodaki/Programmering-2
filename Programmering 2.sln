@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.3 - En egen webbläsare 3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_13 - Again", "1_13 - Again\1_13 - Again.csproj", "{22CC9CDC-4D89-4999-AFAA-6224855D0A3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_6 - Notepad", "1_6 - Notepad\1_6 - Notepad.csproj", "{C8899AF3-742D-4787-AD1A-BEA84B7C0D68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -219,6 +221,10 @@ Global
 		{22CC9CDC-4D89-4999-AFAA-6224855D0A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22CC9CDC-4D89-4999-AFAA-6224855D0A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22CC9CDC-4D89-4999-AFAA-6224855D0A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8899AF3-742D-4787-AD1A-BEA84B7C0D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8899AF3-742D-4787-AD1A-BEA84B7C0D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8899AF3-742D-4787-AD1A-BEA84B7C0D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8899AF3-742D-4787-AD1A-BEA84B7C0D68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
