@@ -35,13 +35,22 @@
 			saveToolStripMenuItem = new ToolStripMenuItem();
 			toolStripSeparator1 = new ToolStripSeparator();
 			exitToolStripMenuItem = new ToolStripMenuItem();
+			formatToolStripMenuItem = new ToolStripMenuItem();
+			fontToolStripMenuItem = new ToolStripMenuItem();
+			arialToolStripMenuItem = new ToolStripMenuItem();
+			consolasToolStripMenuItem = new ToolStripMenuItem();
+			timesNewRomanToolStripMenuItem = new ToolStripMenuItem();
+			toolStripSeparator2 = new ToolStripSeparator();
+			boldToolStripMenuItem = new ToolStripMenuItem();
+			italicToolStripMenuItem = new ToolStripMenuItem();
 			textBox1 = new TextBox();
 			menuStrip1.SuspendLayout();
 			SuspendLayout();
 			// 
 			// menuStrip1
 			// 
-			menuStrip1.Items.AddRange(new ToolStripItem[] { arkivToolStripMenuItem });
+			menuStrip1.ImageScalingSize = new Size(20, 20);
+			menuStrip1.Items.AddRange(new ToolStripItem[] { arkivToolStripMenuItem, formatToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
 			menuStrip1.Size = new Size(484, 24);
@@ -58,35 +67,89 @@
 			// newToolStripMenuItem
 			// 
 			newToolStripMenuItem.Name = "newToolStripMenuItem";
-			newToolStripMenuItem.Size = new Size(180, 22);
+			newToolStripMenuItem.Size = new Size(113, 22);
 			newToolStripMenuItem.Text = "Ny";
 			newToolStripMenuItem.Click += nyToolStripMenuItem_Click;
 			// 
 			// openToolStripMenuItem
 			// 
 			openToolStripMenuItem.Name = "openToolStripMenuItem";
-			openToolStripMenuItem.Size = new Size(180, 22);
+			openToolStripMenuItem.Size = new Size(113, 22);
 			openToolStripMenuItem.Text = "Öppna";
 			openToolStripMenuItem.Click += openToolStripMenuItem_Click;
 			// 
 			// saveToolStripMenuItem
 			// 
 			saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			saveToolStripMenuItem.Size = new Size(180, 22);
+			saveToolStripMenuItem.Size = new Size(113, 22);
 			saveToolStripMenuItem.Text = "Spara";
 			saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
 			// 
 			// toolStripSeparator1
 			// 
 			toolStripSeparator1.Name = "toolStripSeparator1";
-			toolStripSeparator1.Size = new Size(177, 6);
+			toolStripSeparator1.Size = new Size(110, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			exitToolStripMenuItem.Size = new Size(180, 22);
+			exitToolStripMenuItem.Size = new Size(113, 22);
 			exitToolStripMenuItem.Text = "Avsluta";
 			exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+			// 
+			// formatToolStripMenuItem
+			// 
+			formatToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fontToolStripMenuItem, toolStripSeparator2, boldToolStripMenuItem, italicToolStripMenuItem });
+			formatToolStripMenuItem.Name = "formatToolStripMenuItem";
+			formatToolStripMenuItem.Size = new Size(57, 20);
+			formatToolStripMenuItem.Text = "Format";
+			// 
+			// fontToolStripMenuItem
+			// 
+			fontToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { arialToolStripMenuItem, consolasToolStripMenuItem, timesNewRomanToolStripMenuItem });
+			fontToolStripMenuItem.Name = "fontToolStripMenuItem";
+			fontToolStripMenuItem.Size = new Size(180, 22);
+			fontToolStripMenuItem.Text = "Typsnitt";
+			// 
+			// arialToolStripMenuItem
+			// 
+			arialToolStripMenuItem.Name = "arialToolStripMenuItem";
+			arialToolStripMenuItem.Size = new Size(174, 22);
+			arialToolStripMenuItem.Text = "Arial";
+			arialToolStripMenuItem.Click += arialToolStripMenuItem_Click;
+			// 
+			// consolasToolStripMenuItem
+			// 
+			consolasToolStripMenuItem.Name = "consolasToolStripMenuItem";
+			consolasToolStripMenuItem.Size = new Size(174, 22);
+			consolasToolStripMenuItem.Text = "Consolas";
+			consolasToolStripMenuItem.Click += consolasToolStripMenuItem_Click;
+			// 
+			// timesNewRomanToolStripMenuItem
+			// 
+			timesNewRomanToolStripMenuItem.Name = "timesNewRomanToolStripMenuItem";
+			timesNewRomanToolStripMenuItem.Size = new Size(174, 22);
+			timesNewRomanToolStripMenuItem.Text = "Times New Roman";
+			timesNewRomanToolStripMenuItem.Click += timesNewRomanToolStripMenuItem_Click;
+			// 
+			// toolStripSeparator2
+			// 
+			toolStripSeparator2.Name = "toolStripSeparator2";
+			toolStripSeparator2.Size = new Size(177, 6);
+			// 
+			// boldToolStripMenuItem
+			// 
+			boldToolStripMenuItem.Name = "boldToolStripMenuItem";
+			boldToolStripMenuItem.Size = new Size(180, 22);
+			boldToolStripMenuItem.Text = "Fetstil";
+			boldToolStripMenuItem.Click += boldToolStripMenuItem_Click;
+			// 
+			// italicToolStripMenuItem
+			// 
+			italicToolStripMenuItem.Name = "italicToolStripMenuItem";
+			italicToolStripMenuItem.Size = new Size(180, 22);
+			italicToolStripMenuItem.Text = "Kursiv";
+			italicToolStripMenuItem.Click += italicToolStripMenuItem_Click;
 			// 
 			// textBox1
 			// 
@@ -125,5 +188,13 @@
 		private ToolStripMenuItem exitToolStripMenuItem;
 		private TextBox textBox1;
 		private ToolStripSeparator toolStripSeparator1;
+		private ToolStripMenuItem formatToolStripMenuItem;
+		private ToolStripMenuItem fontToolStripMenuItem;
+		private ToolStripMenuItem arialToolStripMenuItem;
+		private ToolStripMenuItem consolasToolStripMenuItem;
+		private ToolStripMenuItem timesNewRomanToolStripMenuItem;
+		private ToolStripMenuItem boldToolStripMenuItem;
+		private ToolStripMenuItem italicToolStripMenuItem;
+		private ToolStripSeparator toolStripSeparator2;
 	}
 }

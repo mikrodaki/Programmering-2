@@ -50,5 +50,36 @@ namespace _1_6___Notepad
 			// Stänger programfönstret
 			Close();
 		}
+
+		private void boldToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			textBox1.Font = new Font(
+				textBox1.Font,
+				textBox1.Font.Style ^ FontStyle.Bold
+			);
+		}
+
+		private void arialToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			textBox1.Font = new Font("Arial", textBox1.Font.Size);
+		}
+
+		private void timesNewRomanToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			textBox1.Font = new Font("Times New Roman", textBox1.Font.Size);
+		}
+
+		private void consolasToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			textBox1.Font = new Font("Consolas", textBox1.Font.Size);
+		}
+
+		private void italicToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			textBox1.Font = new Font(
+				textBox1.Font,
+				textBox1.Font.Style ^ FontStyle.Italic
+			);
+		}
 	}
 }
