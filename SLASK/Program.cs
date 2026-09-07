@@ -1,78 +1,72 @@
 ﻿namespace SLASK
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            //double? result = FactorialDouble(50243782347);
-            //Console.WriteLine(result?.ToString() ?? "null");
-            Console.WriteLine(Pow(5, -3));
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			ShowFolders(@"C:\Test");
+		}
 
-            static int Factorial(int n)
-            {
-                if (n == 1)
-                    return 1;
+		static int Factorial(int n)
+		{
+			if (n == 1)
+				return 1;
 
-                return n * Factorial(n - 1);
-            }
+			return n * Factorial(n - 1);
+		}
 
-            static void CountDown(int n)
-            {
-                if (n < 0)
-                    return;
+		static void CountDown(int n)
+		{
+			if (n < 0)
+				return;
 
-                Console.WriteLine(n);
+			Console.WriteLine(n);
 
-                CountDown(n - 1);
-            }
+			CountDown(n - 1);
+		}
 
-            static int Fibonacci(int n)
-            {
-                Console.WriteLine($"F({n})");
+		static int Fibonacci(int n)
+		{
+			Console.WriteLine($"F({n})");
 
-                if (n <= 1)
-                    return 1;
+			if (n <= 1)
+				return 1;
 
-                return Fibonacci(n - 1) + Fibonacci(n - 2);
-            }
+			return Fibonacci(n - 1) + Fibonacci(n - 2);
+		}
 
+		static double? FactorialDouble(double n)
+		{
+			if (n < 0 || n > 170)
+				return null;
 
-            static double? FactorialDouble(double n)
-            {
-                if (n < 0 || n > 170)
-                    return null;
+			if (n % 1 != 0)
+				return null;
 
-                if (n % 1 != 0)
-                    return null;
+			if (n <= 1)
+				return 1;
 
-                if (n <= 1)
-                    return 1;
+			return n * FactorialDouble(n - 1);
+		}
 
-                return n * FactorialDouble(n - 1);
-            }
+		static int Pow(int a, int n)
+		{
+			if (n < 1)
+				return 1;
 
+			return a * Pow(a, n - 1);
+		}
 
-            static int Pow(int a, int n)
-            {
-                if (n < 1)
-                    return 1;
+		static void ShowFolders(string path)
+		{
+			Console.WriteLine(path);
 
-                return a * Pow(a, n - 1);
-            }
-
-            //string name = "Anna Olsson";
-
-            //int x = 1;
-            //double y = 2;
-            //double z = x + y;
-
-            //char x = '^';
-
-            //Console.WriteLine(x);
-
-            bool x = true;
-        }
-    }
-
-    // Ändrade lite i slask för att se om GIT fungerar som det ska.
+			foreach (string folder in Directory.GetDirectories(path))
+			{
+				ShowFolders(folder);
+			}
+		}
+	}
 }
+
+// Ändrade lite i slask för att se om GIT fungerar som det ska.
