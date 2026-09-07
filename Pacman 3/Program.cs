@@ -288,7 +288,7 @@ namespace PacmanGame
          */
 		static void Intro()
 		{
-			//Sound.PlayIntro();
+			Sound.PlayIntro();
 			Console.ForegroundColor = ConsoleColor.Yellow;
 
 			DrawPacmanTitles();
